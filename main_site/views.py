@@ -1,5 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
@@ -39,16 +41,17 @@ def auth_view_login(request):
         username = request.POST['email']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        import pdb; pdb.set_trace()
+
         if user is not None:
             if user.is_active:
                 login(request, user)
                 # Redirect to a success page.
-                return render_to_response('index.html',context,context_instance=RequestContext(request))        
+                return render_to_response('profile/profile.html',context,context_instance=RequestContext(request))        
             else:
                 # Return a 'disabled account' error message
                 return render_to_response('index.html',context,context_instance=RequestContext(request))        
         else:
             # Return an 'invalid login' error message.
-                return render_to_response('index.html',context,context_instance=RequestContext(request))        
-
+            return HttpResponseRedirect(reverse('registration_register'))     
+    else:
+        return HttpResponseRedirect(reverse('registration_register'))     

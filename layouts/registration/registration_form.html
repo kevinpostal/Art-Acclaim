@@ -26,8 +26,7 @@
                         {% endif %}
 						
 						<table class="join_form_table">
-						    <form method="post" action="/acounts/login/?next={{ next|default:"/" }}">
-						     {% csrf_token %}
+						    <form method="post" action="/acounts/login/?next={{ next|default:"/" }}">{% csrf_token %}
 							<tr>
 								<td class="form_field_label">Email:</td> 
 								<td>{{ form.email }}</td>
@@ -68,7 +67,7 @@
 					<div class="join_form_container">
 					
 						<table class="join_form_table">
-						  <form method="post" action="" class="wide">
+						  <form method="post" action="" class="wide">{% csrf_token %}
 							<tr>
 								<td class="form_field_label">First Name:</td> 
                                   {% if form.first_name.errors %}
