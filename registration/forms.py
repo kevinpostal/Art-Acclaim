@@ -34,7 +34,7 @@ class RegistrationForm(forms.Form):
 
 
         new_user = RegistrationProfile.objects.create_inactive_user(
-                                                                    username="%s.%s" % (self.cleaned_data['first_name'],self.cleaned_data['last_name']),
+                                                                    username="%s" % (self.cleaned_data['email']),
                                                                     password=self.cleaned_data['password'],
                                                                     email=self.cleaned_data['email'],site='123')
                                                            
