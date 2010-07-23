@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     (r'^admin/', include(admin.site.urls)),
-    (r'^acounts/', include('registration.urls')),
+    (r'^accounts/', include('registration.urls')),
     (r'^profile/', include('profiles.urls')),         
     # MAIN INDEX
     (r'^$', index_view),   

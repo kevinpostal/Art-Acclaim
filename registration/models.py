@@ -32,7 +32,6 @@ class RegistrationManager(models.Manager):
                 user.save()
                 account.activation_key = self.model.ACTIVATED
                 account.save()
-                import pdb; pdb.set_trace()
 
                 Profile(user=user).save()
                 return user
