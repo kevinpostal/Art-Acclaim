@@ -35,12 +35,19 @@
 				<a href="help.htm" class="help_tab">Help</a>
 			
 				<!-- Registration -->
+				
+				{% if user.is_authenticated %}
+				 <a href="/accounts/logout/" class=" ">Logout</a>				
+				 <a href="/profile" class=" ">My Account</a>
 
-				<a href="/accounts/register/" class="registration_tab">Register</a>
-				<!-- Login -->
+                {% else %}
+                
+				  <a href="/accounts/register/" class="registration_tab">Register</a>
+				  <!-- Login -->
 
-				<a href="/accounts/login/" class="login_tab">Login</a>	
-
+				  <a href="/accounts/login/" class="login_tab">Login</a>	
+               {% endif %}
+               
 			</div>	
 				
 			<!-- Logo --> 
