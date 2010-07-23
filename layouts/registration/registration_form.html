@@ -21,12 +21,16 @@
 					
 					
 					<div class="join_form_container">
-
+                        {% if form.errors %}
+                        <p class="error">Please correct the errors below:</p>
+                        {% endif %}
 						
 						<table class="join_form_table">
+						    <form method="post" action="/acounts/login/?next={{ next|default:"/" }}">
+						     {% csrf_token %}
 							<tr>
 								<td class="form_field_label">Email:</td> 
-								<td><input type="text" class="join_form_text" name="" value="" /></td>
+								<td>{{ form.email }}</td>
 							</tr>
 							<tr>
 								<td></td> 
@@ -35,7 +39,7 @@
 
 							</tr>
 								<td class="form_field_label">Password:</td> 
-								<td><input type="text" class="join_form_text" name="" value="" /></td>
+								<td>{{ form.password }}</td>
 							</tr>
 							<tr>
 								<td></td> 
@@ -46,6 +50,7 @@
 								<td></td>
 								<td><input type="submit" class="login_submit" value="Login" /></td>
 							</tr>
+							</form>
 						</table>
 							
 					</div>
