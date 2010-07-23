@@ -1,0 +1,113 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+
+  {% if form.errors %}
+  <p class="errors">Please correct the errors below: {{ form.non_field_errors }}</p>
+  {% endif %}
+
+		
+			
+			<!-- Join Content -->
+			
+			<div class="join_content">
+				
+				<div class="join_login">
+				
+					<div class="section_title">Member Sign In</div> 
+					<div class="dotted_divider"></div> 
+					
+					
+					<div class="join_form_container">
+
+						
+						<table class="join_form_table">
+							<tr>
+								<td class="form_field_label">Email:</td> 
+								<td><input type="text" class="join_form_text" name="" value="" /></td>
+							</tr>
+							<tr>
+								<td></td> 
+								<td class="form_field_sub_option" valign="top"><a href="">Forgot your password?</a></td>
+							</tr>
+
+							</tr>
+								<td class="form_field_label">Password:</td> 
+								<td><input type="text" class="join_form_text" name="" value="" /></td>
+							</tr>
+							<tr>
+								<td></td> 
+								<td class="form_field_sub_option" valign="top"><input type="checkbox" name="option1" value="loged_in" checked> Keep me logged in</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td><input type="submit" class="login_submit" value="Login" /></td>
+							</tr>
+						</table>
+							
+					</div>
+					<div class="general_title">Join our growing community of art professionals and creative enthusiasts. Registration is free. Create your account then add your information to your new profile, upload your art and meet new people.</div>
+					
+				</div>
+
+				
+				<div class="join_register">
+				
+					<div class="section_title">New Member Registration</div> 
+					<div class="dotted_divider"></div> 
+					
+					
+					<div class="join_form_container">
+					
+						<table class="join_form_table">
+						  <form method="post" action="" class="wide">
+							<tr>
+								<td class="form_field_label">First Name:</td> 
+                                  {% if form.first_name.errors %}
+                                    <p class="errors">{{ form.first_name.errors.as_text }}</p>
+                                  {% endif %}								
+								<td>{{ form.first_name }}</td>
+							</tr>
+
+							<tr>
+								<td class="form_field_label">Last Name:</td> 
+                                  {% if form.last_name.errors %}
+                                    <p class="errors">{{ form.last_name.errors.as_text }}</p>
+                                  {% endif %}								
+								<td>{{ form.last_name }}</td>
+							</tr>
+							<tr>
+								<td class="form_field_label">Email:</td> 
+                                  {% if form.email.errors %}
+                                    <p class="errors">{{ form.email.errors.as_text }}</p>
+                                  {% endif %}								
+								<td>{{ form.email}}</td>
+							</tr>
+							</tr>
+
+								<td class="form_field_label">Password:</td> 
+                                  {% if form.password.errors %}
+                                    <p class="errors">{{ form.password.errors.as_text }}</p>
+                                  {% endif %}								
+								<td>{{ form.password }}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" class="join_submit" value="Sign Up" /></td>
+							</tr>
+							  </form>
+						</table>	
+						
+					</div>
+
+							<div class="general_title">Join our growing community of art professionals and creative enthusiasts. Registration is free. Create your account then add your information to your new profile, upload your art and meet new people.</div>
+				</div>
+				
+			</div>			
+  
+{% endblock %}
+
+
