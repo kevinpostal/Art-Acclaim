@@ -2,7 +2,7 @@
 <html>
 <head> 
 	<!-- Title --> 
-	<title>Art Acclaim: Welcome</title> 
+	<title>Art Acclaim: {% block title %}Welcome{% endblock %}</title>
 	<!-- Meta --> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<!-- Stylesheets -->	
@@ -48,8 +48,9 @@
 			<a href="index.htm"><img src="/static/images/art_acclaim_logo.gif" class="logo" alt="" /></a> 
 
 		</div>
+{% block navigation %}
 
-		<!-- Sidebar -->
+		<!-- Navbar -->
 			
 		<div class="content">
 		
@@ -112,6 +113,8 @@
 				</div>
 
 			</div>
+
+{% endblock %}	
 			<br class="clear" />
 			
         {% block content %}{% endblock %}	
