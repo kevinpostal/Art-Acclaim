@@ -17,6 +17,11 @@ def profile_list(request):
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
 
+@login_required
+def profile_view(request):
+
+    return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
+
 
 def profile_detail(request, username):
     try:
