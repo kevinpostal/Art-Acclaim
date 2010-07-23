@@ -10,7 +10,6 @@ class ProfileForm(ModelForm):
         model = Profile
 
 
-ServiceFormSet  = inlineformset_factory(Profile, Service)
 LinkFormSet     = inlineformset_factory(Profile, Link)
 
 

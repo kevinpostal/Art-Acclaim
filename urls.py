@@ -14,6 +14,13 @@ urlpatterns = patterns('',
     (r'^$', index_view),   
 
 )
+
+urlpatterns += patterns('django.views.generic.simple',
+    (r'about/$', 'direct_to_template', {'template': 'about.html'}),
+    (r'privacy/$', 'direct_to_template', {'template': 'privacy.html'}),    
+    (r'terms/$', 'direct_to_template', {'template': 'terms.html'}),     
+    )
+
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '%s/static' % settings.PROJECT_PATH }),
