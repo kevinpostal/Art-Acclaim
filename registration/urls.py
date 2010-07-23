@@ -46,11 +46,7 @@ urlpatterns = patterns('',
                            direct_to_template,
                            {'template': 'registration/registration_complete.html'},
                            name='registration_complete'),
-                       url(r'^$',
-                           direct_to_template,
-                           {'template': 'profile/profile.html'},
-                           name='profile_view'),                           
-                           
+
                        )
                        
        

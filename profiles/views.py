@@ -5,8 +5,8 @@ from django.views.generic import list_detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from basic.profiles.models import *
-from basic.profiles.forms import *
+from profiles.models import *
+from profiles.forms import *
 
 
 def profile_list(request):

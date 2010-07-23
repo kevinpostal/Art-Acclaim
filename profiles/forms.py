@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
-from basic.profiles.models import *
+from profiles.models import *
 
 
 class ProfileForm(ModelForm):

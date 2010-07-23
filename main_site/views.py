@@ -46,7 +46,7 @@ def auth_view_login(request):
             if user.is_active:
                 login(request, user)
                 # Redirect to a success page.
-                return render_to_response('profile/profile.html',context,context_instance=RequestContext(request))        
+                return render_to_response('profiles/profile.html',context,context_instance=RequestContext(request))        
             else:
                 # Return a 'disabled account' error message
                 return render_to_response('index.html',context,context_instance=RequestContext(request))        
