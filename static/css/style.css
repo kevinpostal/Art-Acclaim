@@ -204,7 +204,7 @@ body {
 
 .general_acclaim_box {
 	height: 25px;
-	background: url('media/images/general_acclaim_bg.gif') 100% 100%;
+	background: url('/static/images/general_acclaim_bg.gif') 100% 100%;
 	float: left;
 	font-size: 26px;
 	text-align: left;
@@ -216,7 +216,7 @@ body {
 	
 .mini_acclaim_box {
 	height: 15px;
-	background: url('media/images/mini_acclaim_bg.gif') 100% 100%;
+	background: url('/static/images/mini_acclaim_bg.gif') 100% 100%;
 	float: right;
 	font-size: 14px;
 	text-align: left;
@@ -237,7 +237,7 @@ body {
 	color: #ffffff;
 	width: 15px;
 	height: 15px;
-	background: url('media/images/acclaim_plus.gif');
+	background: url('/static/images/acclaim_plus.gif');
 	margin-right: 1px;
 	text-align: center;
 	font-size: 22px;
@@ -249,7 +249,7 @@ body {
 	color: #ffffff;
 	width: 15px;
 	height: 15px;
-	background: url('media/images/acclaim_minus.gif');
+	background: url('/static/images/acclaim_minus.gif');
 	margin-right: 1px;
 	text-align: center;
 	font-size: 22px;
@@ -273,7 +273,7 @@ body {
 .profile_acclaim_box {
 	width: 95px;
 	height: 95px;
-	background: url('media/images/profile_acclaim_bg.gif');
+	background: url('/static/images/profile_acclaim_bg.gif');
 	float: left;
 	font-size: 36px;
 	text-align: center;
@@ -311,7 +311,7 @@ body {
 	height: 30px;
 	float: right;
 	padding-right: 25px;
-	background: url('media/images/top_tab_arrow.gif') no-repeat 100% 100%;
+	background: url('/static/images/top_tab_arrow.gif') no-repeat 100% 100%;
 	}	
 	
 .login_tab {
@@ -361,7 +361,7 @@ body {
 	padding-right: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/edit_icon.gif') no-repeat 100% 100%;
+	background: url('/static/images/edit_icon.gif') no-repeat 100% 100%;
 	}
 	
 .friends {
@@ -372,7 +372,7 @@ body {
 	padding-right: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/person_icon.gif') no-repeat 100% 100%;
+	background: url('/static/images/person_icon.gif') no-repeat 100% 100%;
 	}
 	
 .messages {
@@ -383,7 +383,7 @@ body {
 	padding-right: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/mail_icon.gif') no-repeat 100% 100%;
+	background: url('/static/images/mail_icon.gif') no-repeat 100% 100%;
 	}
 	
 .portfolio {
@@ -394,7 +394,7 @@ body {
 	padding-right: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/art_icon.gif') no-repeat 100% 100%;
+	background: url('/static/images/art_icon.gif') no-repeat 100% 100%;
 	}
 	
 .views {
@@ -405,7 +405,7 @@ body {
 	padding-right: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/view_icon.gif') no-repeat 100% 100%;
+	background: url('/static/images/view_icon.gif') no-repeat 100% 100%;
 	}
 	
 .sidebar_01 a {
@@ -435,7 +435,7 @@ body {
 	text-align: center;
 	float: left;
 	line-height: 55px;
-	background: url('media/images/main_tab_bg.gif') 100% 70%;
+	background: url('/static/images/main_tab_bg.gif') 100% 70%;
 	}
 	
 .main_tab_selected {
@@ -446,7 +446,7 @@ body {
 	float: left;
 	line-height: 55px;
 	cursor: default;
-	background: url('media/images/main_tab_bg.gif') 100% 100% !important;
+	background: url('/static/images/main_tab_bg.gif') 100% 100% !important;
 	}	
 	
 
@@ -470,7 +470,7 @@ body {
 	
 .search_form a {
 	height: 35px;
-	background: url('media/images/search_link_arrow.gif') no-repeat 100% 100%;
+	background: url('/static/images/search_link_arrow.gif') no-repeat 100% 100%;
 	float: left;
 	text-align: left;
 	color: #ffffff;
@@ -488,7 +488,7 @@ body {
 	left: 287px;
 	height: 120px;
 	width: 145px;
-	background: url('media/images/search_select_bg.png');
+	background: url('/static/images/search_select_bg.png');
 	z-index: 1000;
 	display: none;
 	}
@@ -1005,7 +1005,7 @@ body {
 	padding-left: 20px;
 	height: 15px;
 	font-size: 14px;
-	background: url('media/images/mail_icon.gif') no-repeat 0% 100%;
+	background: url('/static/images/mail_icon.gif') no-repeat 0% 100%;
 	}
 	
 
@@ -1153,7 +1153,7 @@ body {
 .message_check_box {
 	height: 15px;
 	width: 15px;
-	background: url(media/images/check_box.gif);
+	background: url(/static/images/check_box.gif);
 	margin-top: 30px;
 	float: left;
 	}
@@ -1161,7 +1161,7 @@ body {
 .message_check_box:hover {
 	height: 15px;
 	width: 15px;
-	background: url(media/images/check_box_selected.gif);
+	background: url(/static/images/check_box_selected.gif);
 	margin-top: 30px;
 	float: left;
 	}
@@ -1169,7 +1169,7 @@ body {
 .message_check_box_selected {
 	height: 15px;
 	width: 15px;
-	background: url(media/images/check_box_selected.gif);
+	background: url(/static/images/check_box_selected.gif);
 	margin-top: 30px;
 	float: left;
 	}
@@ -1177,7 +1177,7 @@ body {
 .message_close_button {
 	height: 15px;
 	width: 15px;
-	background: url(media/images/close_button.gif);
+	background: url(/static/images/close_button.gif);
 	margin-top: 30px;
 	float: left;
 	}
@@ -1351,7 +1351,7 @@ body {
 	font-size: 14px;
 	height: 15px;
 	text-align: top;
-	background: url(media/images/rss_icon.gif) no-repeat;
+	background: url(/static/images/rss_icon.gif) no-repeat;
 	padding-left: 20px;
 	line-height: 17px;
 	display: block;

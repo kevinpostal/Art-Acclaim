@@ -19,7 +19,9 @@ profile_list.__doc__ = list_detail.object_list.__doc__
 
 @login_required
 def profile_view(request):
-
+    context = {}
+    context['profile'] = Profile.objects.get(user=request.user)
+    #import pdb; pdb.set_trace()
     return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
 
 
