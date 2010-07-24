@@ -1,3 +1,38 @@
+// Search Dropdown Box
+
+$(document).ready(function(){$('.search_link').hoverIntent(function() {$('.search_select').slideDown('slow');return false;},function() {})});
+$(document).ready(function(){$('.search_type').click(function() {$('.search_select').slideUp('fast');return false;})});
+
+$(document).ready(function(){$('.right_column').hover(function() {$('.search_select').hide();return false;})});
+$(document).ready(function(){$('.main_tab').hover(function() {$('.search_select').hide();return false;})});
+$(document).ready(function(){$('.search_text').hover(function() {$('.search_select').hide();return false;})});
+
+
+
+// Search Dropdown Select
+
+$(document).ready(function(){$('#select_people').click(function() {$('#active_title').hide();return false;})});
+$(document).ready(function(){$('#select_people').click(function() {$('#active_tags').hide();return false;})});
+$(document).ready(function(){$('#select_people').click(function() {$('#active_topics').hide();return false;})});
+
+$(document).ready(function(){$('#select_people').click(function() {$('#active_people').fadeIn('slow');return false;})});
+
+
+$(document).ready(function(){$('#select_tags').click(function() {$('#active_title').hide();return false;})});
+$(document).ready(function(){$('#select_tags').click(function() {$('#active_people').hide();return false;})});
+$(document).ready(function(){$('#select_tags').click(function() {$('#active_topics').hide();return false;})});
+
+$(document).ready(function(){$('#select_tags').click(function() {$('#active_tags').fadeIn('slow');return false;})});
+
+
+$(document).ready(function(){$('#select_topics').click(function() {$('#active_title').hide();return false;})});
+$(document).ready(function(){$('#select_topics').click(function() {$('#active_people').hide();return false;})});
+$(document).ready(function(){$('#select_topics').click(function() {$('#active_tags').hide();return false;})});
+
+$(document).ready(function(){$('#select_topics').click(function() {$('#active_topics').fadeIn('slow');return false;})});
+
+
+
 // Link Animation
 
 (function($) {

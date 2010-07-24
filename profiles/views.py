@@ -46,37 +46,27 @@ def profile_view(request, user_id=""):
         return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
 
 @login_required
-def profile_edit(request, template_name='profiles/profile_form.html'):
+def profile_edit(request, template_name='profiles/profile_edit.html'):
     """Edit profile."""
 
     if request.POST:
         profile = Profile.objects.get(user=request.user)
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
         user_form = UserForm(request.POST, instance=request.user)
-        service_formset = ServiceFormSet(request.POST, instance=profile)
-        link_formset = LinkFormSet(request.POST, instance=profile)
 
-        if profile_form.is_valid() and user_form.is_valid() and service_formset.is_valid() and link_formset.is_valid():
+        if profile_form.is_valid() and user_form.is_valid():
             profile_form.save()
             user_form.save()
-            service_formset.save()
-            link_formset.save()
-            return HttpResponseRedirect(reverse('profile_detail', kwargs={'username': request.user.username}))
+            return HttpResponseRedirect(reverse('profile_view',))
         else:
             context = {
                 'profile_form': profile_form,
                 'user_form': user_form,
-                'service_formset': service_formset,
-                'link_formset': link_formset
             }
     else:
         profile = Profile.objects.get(user=request.user)
-        service_formset = ServiceFormSet(instance=profile)
-        link_formset = LinkFormSet(instance=profile)
         context = {
             'profile_form': ProfileForm(instance=profile),
             'user_form': UserForm(instance=request.user),
-            'service_formset': service_formset,
-            'link_formset': link_formset
         }
     return render_to_response(template_name, context, context_instance=RequestContext(request))

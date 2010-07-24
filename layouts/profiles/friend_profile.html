@@ -1,0 +1,626 @@
+{% extends "registration/base.html" %}
+
+{% block navigation %} {% endblock %}
+
+{% block content %}	
+	
+	
+		<!-- Sidebar --> 
+			
+		<div class="content"> 
+		
+			
+			
+			<!-- Sidebar --> 
+			
+			<div class="sidebar_02"> 
+				
+				<a href="profile.htm" class="sidebar_hero_container"><img src="/static/images/profile_image.jpg" alt="" class="sidebar_hero" /></a>
+				<div class="dotted_divider"></div> 
+								
+				
+				<div class="sidebar_title"><a href="profile.htm">Info</a></div> 
+				<div class="sidebar_title"><a href="portfolio.htm">Portfolio</a><a href="portfolio.htm" class="portfolio">12</a></div>				
+				
+				<div class="dotted_divider"></div> 
+				<div class="sidebar_title"><a href="messages.htm">Messages</a><a href="messages.htm" class="messages">12</a></div>
+				<div class="sidebar_title"><a href="friends.htm">Friends</a><a href="friends.htm" class="friends">1111</a></div>  
+				<div class="sidebar_title"><a href="views.htm">Recent Views</a><a href="views.htm" class="views">3</a></div> 
+				
+				<div class="dotted_divider"></div>	
+				<div class="sidebar_title">Total Views<div class="sidebar_section_title">1010</div></div> 
+				<div class="sidebar_title">Fans<div class="sidebar_section_title">1003</div></div> 
+				
+			</div> 
+			
+			
+			
+			<!-- Right Column --> 
+			
+			<div class="right_column"> 
+				
+				
+				
+				<!-- Main Navigation --> 
+			
+				<div class="main_navigation">	
+			
+			
+			
+					<!-- Main Navigation --> 
+			
+					<div class="main_tab_container"> 
+					
+						<a href="profile.htm" class="main_tab">Profile</a> 
+						<a href="gallery.htm" class="main_tab_selected" onclick="return false">Gallery</a>		
+						<a href="forum.htm" class="main_tab">Forum</a> 
+				
+					</div> 
+				
+				
+					
+					<!-- Search --> 
+				
+					<form> 
+				
+						<div class="search_select"> 
+						
+							<a href="" class="search_type">People</a> 
+							<a href="" class="search_type">Tags</a> 
+							<a href="" class="search_type">Topics</a> 
+							
+						</div> 
+				
+						<div class="search_form"> 
+					
+							<div class="search_link_container"> 
+							
+								<a href="" class="search_link" onclick="return false">Select</a> 
+								
+							</div> 
+					
+							<input type="text" class="search_text" name="" value="Search" /> 
+							<input type="submit" class="search_submit" value="Submit" /> 
+						
+						</div> 
+				
+					</form> 
+			
+				</div> 
+				
+				
+				
+				<!-- Profile Content --> 
+				
+				<div class="general_content">
+
+
+					<div class="dotted_divider"></div> 
+					
+					
+					
+					<!-- Name & Stats -->	
+									
+					<div class="friend_title">
+		
+						<div class="section_title">{{ name }}<a href="friends.htm" class="friends">Add as Friend</a></div>
+		
+						<div class="dotted_divider"></div> 
+										
+						<div class="friend_stat_title">Friends<div class="sidebar_section_title">1010</div></div> 
+
+						<div class="friend_stat_title">Total Views<div class="sidebar_section_title">1010</div></div> 
+
+						<div class="friend_stat_title">Fans<div class="sidebar_section_title">1003</div></div> 
+						
+						<div class="friend_mini_acclaim">
+							<div class="general_acclaim_box">101K</div>
+						</div>
+
+					</div>
+					
+					
+					
+					<!-- Friend Hero -->
+				
+					<div class="friend_hero_container">
+						<div class="friend_hero">
+							<img src="/static/images/profile_image_kevin.jpg" alt="" class="sidebar_hero" />
+						</div>
+					</div>
+
+
+				
+ 					<!-- Quote -->
+ 					
+					<div class="general_title">Quote</div> 
+					<div class="dotted_divider"></div> 
+					<div class="general_text">{{ profile.quote }}</div> 									
+ 	
+ 
+ 
+ 					<!-- Location -->
+ 					
+					<div class="general_title">Location</div> 
+					<div class="dotted_divider"></div> 
+					<div class="general_text">
+                    {% if profile.city and profile.state  %}
+					{{ profile.city }}, {{ profile.state }}
+					{% else %}
+					unavailable
+                    {% endif %}
+					</div> 
+					
+					
+					
+ 					<!-- Education -->
+ 					
+					<div class="general_title">Education</div> 
+					<div class="dotted_divider"></div> 
+					<div class="general_text"> {{ profile.education }}</div> 
+
+
+					
+ 					<!-- Bio -->
+					
+					<div class="general_title">Bio</div> 
+					<div class="dotted_divider"></div> 
+					<div class="general_text">
+                     {{ profile.bio }}
+					</div> 
+				
+				</div>
+
+				
+				
+				<!-- Portfolio Content --> 
+				
+				<div class="general_content">
+
+			
+					
+					<!-- Portfolio Header --> 
+					
+					<div class="section_title">
+						Portfolio
+						<div class="general_right_float">
+							Sort: <a href="" class="general_link_selected">Exhibit Date</a> | <a href="" class="general_link">Acclaim</a>
+						</div>
+					</div> 
+					
+					<div class="dotted_divider"></div> 
+
+					
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+							
+							
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+						
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container_last">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+							
+							
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+						
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container_last">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+							
+							
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+						
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container_last">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+							
+							
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+						
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container_last">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+									
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+					
+							
+							
+					<!-- Artwork --> 
+					
+					<div class="art_container">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+						
+						
+					
+					<!-- Artwork --> 
+					
+					<div class="art_container_last">
+					
+						<a href=""><div class="general_title_no_margin">Bucket Cello</div></a>
+						
+						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
+						
+						<div class="art_info">
+							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+							Artist: <a href="">Cody Pallo</a><br />
+							Dimensions: 6' x 4' <br />
+							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
+							<div class="art_dates">
+								Created: 09.40.06<br />
+								Exhibited: 08.20.10
+							</div>
+							<div class="mini_acclaim">
+								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+							</div>					
+						</div>
+
+					</div>
+									
+					<br class="clear" />
+					<br />
+					
+				
+ 				
+ 				<div class="dotted_divider"></div> 	
+			
+			 </div> 
+			
+			<br class="clear" />
+			
+				
+
+			
+			
+				<!-- Art Footer --> 
+					
+				<div class="section_title"><div class="general_right_float"> 1 - 15 of 2000 <a href="">Older <span class="helvetica">&#8250;</span></a>  <a href="">Oldest <span class="helvetica">&#187;</span></a></div></div> 
+			
+			</div>		
+{% endblock %}			
+			
+{% block footer %}			
+			<!-- Footer --> 
+			
+			<div class="footer"> 
+					
+				<div class="small_print_02"> 
+<a href="http://www.chimesandrhymes.com" target="_blank">Blog</a> / <a href="about.htm">About</a> / <a href="privacy.htm">Privacy</a> / <a href="terms.htm">Terms 0f Use</a><br />
+					Site Design By Groundwork Counsel<br /> 
+					<span class="helvetica">&copy;</span> Art Acclaim 2010 
+				</div> 
+					
+					
+				<div class="profile_acclaim"> 
+					<div class="profile_acclaim_box">101K</div> 
+					<div class="profile_acclaim_title">Acclaim</div> 
+				</div> 
+				
+			</div> 
+			
+		</div> 
+	
+	</div> 
+ 
+</body> 
+</html> 
+{% endblock %}

@@ -481,16 +481,57 @@ body {
 .search_link {
 	width: 125px;
 	}
-	
+		
 .search_select {
 	position: absolute;
-	top: 0px;
-	left: 287px;
-	height: 120px;
-	width: 145px;
-	background: url('/static/images/search_select_bg.png');
+	top: 10px;
+	left: 298px;
+	height: 140px;
+	width: 125px;
+	background: #7c7c7c;
 	z-index: 1000;
+	color: #ffffff;
 	display: none;
+	}
+	
+#active_people {
+	display: none;
+	}
+	
+#active_tags {
+	display: none;
+	}
+	
+#active_topics {
+	display: none;
+	}
+	
+.search_title {
+	background: #9e9e9e;
+	height: 35px;
+	width: 110px;
+	float: left;
+	line-height: 35px;
+	color: #ffffff;
+	padding-left: 15px;	
+	}
+
+.search_type {
+	height: 35px;
+	width: 110px;
+	float: left;
+	line-height: 35px;
+	color: #ffffff;
+	padding-left: 15px;	
+	cursor: pointer;
+	}
+	
+.search_type:hover {
+	height: 35px;
+	width: 110px;
+	float: left;
+	background: #9e9e9e;
+	color: #ffffff;
 	}
 
 .search_text {
@@ -500,10 +541,10 @@ body {
 	border: none;
 	float: left;
 	padding-left: 15px;
+	line-height: 35px;
 	padding-right: 15px;
 	font-size: 14px;
 	color: #9e9e9e;
-	line-height: 32px;
 	font-family: 'BlueHighwayBold', sans-serif;
 	}
 
@@ -1052,6 +1093,7 @@ body {
 	position: relative;
 	}
 	
+
 
 /* Menu Navigation */
 	
