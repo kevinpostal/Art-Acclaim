@@ -25,6 +25,8 @@ class Profile(models.Model):
     zip = models.CharField(_('zip'), blank=True, max_length=10)
     country = models.CharField(_('country'), blank=True, max_length=100)
     quote = models.TextField(_('quote'), blank=True)
+    education = models.TextField(_('education'), blank=True)
+    bio = models.TextField(_('Bio'), blank=True)
     
     class Meta:
         verbose_name = _('user profile')

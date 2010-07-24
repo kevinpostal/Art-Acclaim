@@ -19,6 +19,7 @@ urlpatterns += patterns('django.views.generic.simple',
     (r'about/$', 'direct_to_template', {'template': 'about.html'}),
     (r'privacy/$', 'direct_to_template', {'template': 'privacy.html'}),    
     (r'terms/$', 'direct_to_template', {'template': 'terms.html'}),     
+    (r'help/$', 'direct_to_template', {'template': 'help.html'}),         
     )
 
 if settings.DEBUG:

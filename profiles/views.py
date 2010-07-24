@@ -17,24 +17,33 @@ def profile_list(request):
     )
 profile_list.__doc__ = list_detail.object_list.__doc__
 
-@login_required
-def profile_view(request):
-    context = {}
-    context['profile'] = Profile.objects.get(user=request.user)
-    context['user'] = User.objects.get(username=request.user)
-    context['name'] = context['user'].get_full_name()
-    return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
 
-
-def profile_detail(request, username):
-    try:
-        user = User.objects.get(username__iexact=username)
-    except User.DoesNotExist:
-        raise Http404
-    profile = Profile.objects.get(user=user)
-    context = { 'object':profile }
-    return render_to_response('profiles/profile_detail.html', context, context_instance=RequestContext(request))
-
+def profile_view(request, user_id=""):
+#Check if request is for your profile or another users
+    if user_id:
+        try:
+            user = User.objects.get(id__iexact=user_id)
+        except User.DoesNotExist:
+            raise Http404
+            
+        profile = Profile.objects.get(user=user)
+        context = {}
+        context['profile'] = Profile.objects.get(user=user)
+        context['user'] = user
+        context['name'] = context['user'].get_full_name()
+        
+        return render_to_response('profiles/friend_profile.html', context, context_instance=RequestContext(request))
+    else:
+        #Only allow logged in users#
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('registration_register')) 
+            
+        context = {}
+        context['profile'] = Profile.objects.get(user=request.user)
+        context['user'] = User.objects.get(username=request.user)
+        context['name'] = context['user'].get_full_name()
+        
+        return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
 
 @login_required
 def profile_edit(request, template_name='profiles/profile_form.html'):
