@@ -1,8 +1,25 @@
-{% extends "registration/base.html" %}
+{% extends "base_static.html" %}
+
+
+{% block sidebar %}
+<!-- Sidebar -->
+
+<div class="sidebar_01">
+    
+    <a href="join.htm">Join</a>						
+            
+</div>
+{% endblock %}
 
 {% block title %}Logged out{% endblock %}
 
 {% block content %}
-<h1>You've been logged out.</h1>
-<p>Thanks for stopping by; when you come back, don't forget to <a href="/accounts/login/">log in</a> again.</p>
+<div class="center_content">
+<div class="section_title">You've been logged out.</div>
+<div class="dotted_divider"></div> 
+Thanks for stopping by; when you come back, don't forget to <a href="/accounts/login/">log in</a> again.
+
+</div>
+
 {% endblock %}
+

@@ -2,6 +2,8 @@
 
 {% block navigation %} {% endblock %}
 
+
+
 {% block content %}	
 	
 		<!-- Sidebar --> 
@@ -11,27 +13,7 @@
 			
 			
 			<!-- Sidebar --> 
-			
-			<div class="sidebar_02"> 
-				
-				<a href="profile.htm" class="sidebar_hero_container"><img src="/static/images/profile_image.jpg" alt="" class="sidebar_hero" /></a>
-				<div class="dotted_divider"></div> 
-								
-				
-				<div class="sidebar_title"><a href="profile.htm">Info</a></div> 
-				<div class="sidebar_title"><a href="portfolio.htm">Portfolio</a><a href="portfolio.htm" class="portfolio">12</a></div>				
-				
-				<div class="dotted_divider"></div> 
-				<div class="sidebar_title"><a href="messages.htm">Messages</a><a href="messages.htm" class="messages">12</a></div>
-				<div class="sidebar_title"><a href="friends.htm">Friends</a><a href="friends.htm" class="friends">1111</a></div>  
-				<div class="sidebar_title"><a href="views.htm">Recent Views</a><a href="views.htm" class="views">3</a></div> 
-				
-				<div class="dotted_divider"></div>	
-				<div class="sidebar_title">Total Views<div class="sidebar_section_title">1010</div></div> 
-				<div class="sidebar_title">Fans<div class="sidebar_section_title">1003</div></div> 
-				
-			</div> 
-			
+
 			
 			
 			<!-- Right Column --> 
@@ -102,11 +84,11 @@
 					<div class="photo_upload_container_01">
 					
 						
-						
+
 						<!-- Photo Upload Left --> 
 						
 						<div class="photo_upload_left">
-							<img src="/static/images/profile_hero_blank.gif" alt="" />
+							<img src="/static/{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="223px" height="223px"/>
 						</div>
 						
 						
@@ -118,8 +100,11 @@
 							<div class="photo_upload_title">Select an image file on your computer</div>
 							<div class="dotted_divider"></div>
 							<div class="upload_submit_container">
-								<form>
-									<input type="submit" class="choose_file" value="Choose File" /><div class="upload_sumbit_label">No File Chosen</div>
+                                <form action="." method="post" enctype="multipart/form-data" class="profile_form">{% csrf_token %}
+									   {{ profile_form.mugshot }}
+									<div class="upload_sumbit_label">No File Chosen</div>
+                                <input class="menu_button_right_selected" type="submit" value="Update Profile">
+											
 								</form>
 							</div>
 							<div class="upload_submit_note_01">* Image must be square and a minimum of <br />325 pixels X 325 pixels</div> 

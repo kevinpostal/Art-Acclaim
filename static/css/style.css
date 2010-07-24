@@ -314,16 +314,8 @@ body {
 	background: url('/static/images/top_tab_arrow.gif') no-repeat 100% 100%;
 	}	
 	
-.login_tab {
-	width: 45px;
-	}
-	
-.registration_tab {	
-	width: 70px;
-	}
-	
-.help_tab {
-	width: 43px;
+.top_tab {
+	padding-left: 15px;
 	}
 
 
