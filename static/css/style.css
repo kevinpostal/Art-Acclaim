@@ -314,11 +314,88 @@ body {
 	background: url('/static/images/top_tab_arrow.gif') no-repeat 100% 100%;
 	}	
 	
+.login_tab {
+	padding-left: 15px;
+	}
+	
+.registration_tab {	
+	padding-left: 15px;
+	}
+	
+.help_tab {
+	padding-left: 15px;
+	}
+	
 .top_tab {
 	padding-left: 15px;
 	}
+	
+#top_login_form_position {
+	position: absolute;
+	top: 0px;
+	right: 240px;
+	width: 500px;
+	height: 30px;
+	z-index: 999;
+	overflow: hidden;
+	}
 
+#top_login_form_outer {
+	overflow: hidden;
+	width: 500px;
+	height: 30px;
 
+    }
+
+#top_login_form_inner {
+	width: 500px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	margin-right: -1000px;
+	}
+	
+.top_login_label {
+	line-height: 20px;
+	height: 30px;
+	line-height: 28px;
+	font-size: 12px;
+	float: left;
+	margin-right: 10px;
+	text-align: right;
+	color: #ffffff;
+	margin-left: 15px;
+	}
+	
+.top_login_input {
+	float: left;
+	background: #ffffff;
+	border: 0px;
+	width: 140px;
+	height: 15px;
+	padding-left: 5px;
+	color: #9e9e9e;
+	font-size: 12px;
+	margin-top: 6px;
+	font-family: 'BlueHighwayBold', sans-serif;
+	}
+	
+.top_login_submit {
+	border: 0px;
+	background: #7c7c7c;
+	font-family: 'BlueHighwayBold', sans-serif;
+	height: 20px;
+	width: 60px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 12px;
+	color: #ffffff;
+	line-height: 14px;
+	}
+	
+	
 
 /* Sidebar */
 
@@ -533,7 +610,6 @@ body {
 	border: none;
 	float: left;
 	padding-left: 15px;
-	line-height: 35px;
 	padding-right: 15px;
 	font-size: 14px;
 	color: #9e9e9e;
@@ -774,9 +850,17 @@ body {
 	display: block;
 	}
 
+.choose_file_container {
+	position: relative;
+	height: 35px;
+	width: 110px;	
+	}
+	
 .choose_file {
 	height: 35px;
 	width: 110px;	
+	text-align: center;
+	line-height: 35px;
 	border: none;
 	float: left;
 	color: #ffffff;
@@ -784,8 +868,22 @@ body {
 	font-family: 'BlueHighwayBold', sans-serif;
 	font-size: 14px;
 	cursor: pointer;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
 	}
-	
+
+.choose_file_button {
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+	position:absolute;
+	left: 0px;
+	top: 0px;
+	}
+		
 .take_picture {
 	height: 35px;
 	width: 115px;	
@@ -1085,7 +1183,6 @@ body {
 	position: relative;
 	}
 	
-
 
 /* Menu Navigation */
 	

@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from main_site.views import index_view
+from image_guru.views import image_render
 import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,7 +10,10 @@ urlpatterns = patterns('',
 
     (r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('registration.urls')),
-    (r'^profile/', include('profiles.urls')),         
+    (r'^profile/', include('profiles.urls')),
+    (r'^portfolio/', include('portfolio.urls')),
+    
+    (r'^guru/', image_render),   
     # MAIN INDEX
     (r'^$', index_view),   
 

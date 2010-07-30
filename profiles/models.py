@@ -9,21 +9,10 @@ from django.contrib.localflavor.us.models import PhoneNumberField
 
 
 class Profile(models.Model):
-    """Profile model"""
-    GENDER_CHOICES = (
-        (1, 'Male'),
-        (2, 'Female'),
-    )
+
     user = models.ForeignKey(User, unique=True)
-    gender = models.PositiveSmallIntegerField(_('gender'), choices=GENDER_CHOICES, blank=True, null=True)
     mugshot = models.FileField(_('mugshot'), upload_to='mugshots', blank=True)
-    birth_date = models.DateField(_('birth date'), blank=True, null=True)
-    address1 = models.CharField(_('address1'), blank=True, max_length=100)
-    address2 = models.CharField(_('address2'), blank=True, max_length=100)
-    city = models.CharField(_('city'), blank=True, max_length=100)
-    state = models.CharField(_('state'), blank=True, max_length=100, help_text='or Province')
-    zip = models.CharField(_('zip'), blank=True, max_length=10)
-    country = models.CharField(_('country'), blank=True, max_length=100)
+    location = models.CharField(_('location'), blank=True, max_length=100)
     quote = models.TextField(_('quote'), blank=True)
     education = models.TextField(_('education'), blank=True)
     bio = models.TextField(_('Bio'), blank=True)
@@ -37,10 +26,9 @@ class Profile(models.Model):
         return u"%s" % self.user.get_full_name()
 
     @property
-    def age(self):
-        TODAY = datetime.date.today()
-        if self.birth_date:
-            return u"%s" % relativedelta.relativedelta(TODAY, self.birth_date).years
+    def name(self):
+        if self.user:
+            return u"%s" % self.user.get_full_name()
         else:
             return None
 

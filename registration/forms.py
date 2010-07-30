@@ -1,8 +1,3 @@
-"""
-Forms and validation code for user registration.
-
-"""
-
 from django.contrib.auth.models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -35,6 +30,8 @@ class RegistrationForm(forms.Form):
 
         new_user = RegistrationProfile.objects.create_inactive_user(
                                                                     username="%s" % (self.cleaned_data['email']),
+                                                                    first_name=self.cleaned_data['first_name'],
+                                                                    last_name=self.cleaned_data['last_name'],                                                                    
                                                                     password=self.cleaned_data['password'],
                                                                     email=self.cleaned_data['email'],site='123')
                                                            

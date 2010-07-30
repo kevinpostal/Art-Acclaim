@@ -1,18 +1,86 @@
 {% extends "base.html" %}
 
+
+
 {% block sidebar %}
 <!-- Sidebar -->
 
 <div class="sidebar_01">
     
-    <a href="join.htm">Join</a>						
+    <a href="/accounts/register/">Join</a>						
             
 </div>
+
 {% endblock %}
 	
+	
+{% block navigation %}			
+			
+			<!-- Right Column -->
+			
+			<div class="right_column">
+				
+				
+				
+				<!-- Main Navigation -->
+			
+				<div class="main_navigation">	
+			
+			
+			
+					<!-- Main Navigation -->
+			
+					<div class="main_tab_container">
+					
+						<a href="profile.htm" class="main_tab">Profile</a>
+						<a href="gallery.htm" class="main_tab">Gallery</a>		
+						<a href="forum.htm" class="main_tab">Forum</a>
+				
+					</div>
+				
+				
+					
+					<!-- Search -->
+				
+					<form>
+				
+						<div class="search_select">
+						
+							<div class="search_title">Select</div>
+							
+							<div class="search_type" id="select_people">People</div>
+							<div class="search_type" id="select_tags">Tags</div>
+							<div class="search_type" id="select_topics">Topics</div>
+							
+						</div>
+				
+						<div class="search_form">
+					
+							<div class="search_link_container">
+							
+								<a href="" class="search_link" id="active_title">Select</a>
+								
+								<a href="" class="search_link" id="active_people">People</a>
+								<a href="" class="search_link" id="active_tags">Tags</a>
+								<a href="" class="search_link" id="active_topics">Topics</a>
+								
+							</div>
+					
+							<input type="text" class="search_text" name="" value="Search" />
+							<input type="submit" class="search_submit" value="Submit" />
+						
+						</div>
+				
+					</form>
+			
+				</div>
+
+			</div>
+			<br class="clear" />
+	{% endblock %}		
+	
 {% block content %}
-
-
+		
 			<!-- Home Banner -->
 			
 			<div class="home_banner">
@@ -22,6 +90,9 @@
 					your work with the art world
 					
 			</div>
+				
+			
+			
 			
 			<!-- Home Top Artists -->
 			
@@ -30,14 +101,14 @@
 				<div class="section_title">Top Artists</div>
 				<div class="dotted_divider"></div>
 				
- 
+				
+				
 				<!-- Top Artist 01 -->
 				
 				<div class="home_top_artists">
 					
 					<table class="home_top_item_caption">
 						<tr>
-
 							<td valign="center">
 								Cody Pallo
 							</td>
@@ -49,7 +120,6 @@
 					<div class="home_mini_acclaim_01">
 						<div class="mini_acclaim_box">101K</div>
 					</div>
-
 				
 				</div>
 				
@@ -65,7 +135,6 @@
 								Cody Pallo
 							</td>
 						</tr>
-
 					</table>
 						
 					<div class="home_top_item_caption_bg"></div>
@@ -81,7 +150,6 @@
 				<!-- Top Artist 03 -->
 				
 				<div class="home_top_artists">
-
 					
 					<table class="home_top_item_caption">
 						<tr>
@@ -94,7 +162,6 @@
 					<div class="home_top_item_caption_bg"></div>
 						
 					<div class="home_mini_acclaim_01">
-
 						<div class="mini_acclaim_box">101K</div>
 					</div>
 				
@@ -109,7 +176,6 @@
 					<table class="home_top_item_caption">
 						<tr>
 							<td valign="center">
-
 								Cody Pallo
 							</td>
 						</tr>
@@ -122,7 +188,6 @@
 					</div>
 				
 				</div>
-
 				
 				
 				
@@ -137,7 +202,6 @@
 							</td>
 						</tr>
 					</table>
-
 						
 					<div class="home_top_item_caption_bg"></div>
 						
@@ -155,7 +219,6 @@
 			<!-- Top Art -->
 			
 			<div class="home_top_content_02">
-
 			
 				<div class="section_title">Top Art</div>
 				<div class="dotted_divider"></div>
@@ -167,7 +230,6 @@
 							<div class="mini_acclaim_box">101K</div>
 						</div>
 					</div>
-
 					
 					
 					<div class="home_top_art">
@@ -180,7 +242,6 @@
 					<div class="home_top_art">
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
-
 						</div>
 					</div>
 		
@@ -193,7 +254,6 @@
 					
 					
 					<div class="home_top_art_last">
-
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
 						</div>
@@ -209,7 +269,6 @@
 			<!-- Recently Added -->
 			
 			<div class="home_top_content_03">
-
 			
 				<div class="section_title">Recently Added</div>
 				<div class="dotted_divider"></div>
@@ -221,7 +280,6 @@
 							<div class="mini_acclaim_box">101K</div>
 						</div>
 					</div>
-
 	
 	
 					<div class="home_recent_item">
@@ -234,7 +292,6 @@
 					<div class="home_recent_item">
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
-
 						</div>
 					</div>
 		
@@ -247,7 +304,6 @@
 		
 		
 					<div class="home_recent_item">
-
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
 						</div>
@@ -258,7 +314,6 @@
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
 						</div>
-
 					</div>
 					
 					<div class="home_recent_item">
@@ -270,7 +325,6 @@
 	
 					<div class="home_recent_item">
 						<div class="home_mini_acclaim_02">
-
 							<div class="mini_acclaim_box">101K</div>
 						</div>
 					</div>
@@ -281,7 +335,6 @@
 							<div class="mini_acclaim_box">101K</div>
 						</div>
 					</div>
-
 		
 		
 					<div class="home_recent_item">
@@ -294,7 +347,6 @@
 					<div class="home_recent_item">
 						<div class="home_mini_acclaim_02">
 							<div class="mini_acclaim_box">101K</div>
-
 						</div>
 					</div>
 					
@@ -306,12 +358,27 @@
 					</div>
 					
 				</div>
-
 				
 			</div>
+			
+{% endblock %}
+{% block footer %}	
+			<div class="footer">
+					
+				<div class="small_print_01">
+<a href="http://www.chimesandrhymes.com" target="_blank">Blog</a> / <a href="about.htm">About</a> / <a href="privacy.htm">Privacy</a> / <a href="terms.htm">Terms 0f Use</a><br />
+					Site Design By Groundwork Counsel<br />
+					<div class="home_copyright">
+						<span class="helvetica">&copy;</span> Art Acclaim 2010 
+					</div>
+				</div>	
+				
+			</div>
+			
+		</div>
+	
+	</div>
 
-
-
-
-
+</body>
+</html>
 {% endblock %}

@@ -1,69 +1,8 @@
-{% extends "base.html" %}
+{% extends "base.html" %}	
 
 
-
-
-		<!-- Sidebar --> 
-			
-
-
-			
-			
-			<!-- Right Column --> 
-			
+{% block content %}	
 		
-				
-{% block navigation %}				
-            <div class="right_column"> 
-				<!-- Main Navigation --> 
-			
-				<div class="main_navigation">	
-			
-			
-			
-					<!-- Main Navigation --> 
-			
-					<div class="main_tab_container"> 
-					
-						<a href="profile.htm" class="main_tab_selected" onclick="return false">Profile</a> 
-						<a href="gallery.htm" class="main_tab">Gallery</a>		
-						<a href="forum.htm" class="main_tab">Forum</a> 
-				
-					</div> 
-				
-				
-					
-					<!-- Search --> 
-				
-					<form> 
-				
-						<div class="search_select"> 
-						
-							<a href="" class="search_type">People</a> 
-							<a href="" class="search_type">Tags</a> 
-							<a href="" class="search_type">Topics</a> 
-							
-						</div> 
-				
-						<div class="search_form"> 
-					
-							<div class="search_link_container"> 
-							
-								<a href="" class="search_link" onclick="return false">Select</a> 
-								
-							</div> 
-					
-							<input type="text" class="search_text" name="" value="Search" /> 
-							<input type="submit" class="search_submit" value="Submit" /> 
-						
-						</div> 
-				
-					</form> 
-			
-				</div> 
-		{% endblock %}		
-				
-	{% block content %}			
 				<!-- Profile Content --> 
 				
 				<div class="general_content"> 
@@ -81,8 +20,8 @@
 					<div class="general_title">Location</div> 
 					<div class="dotted_divider"></div> 
 					<div class="general_text">
-					{% if profile.city and profile.state  %}
-					{{ profile.city }}, {{ profile.state }}
+					{% if profile.location %}
+					{{ profile.location }}
 					{% else %}
 					unavailable
                     {% endif %}
@@ -94,7 +33,13 @@
  					
 					<div class="general_title">Education</div> 
 					<div class="dotted_divider"></div> 
-					<div class="general_text"> {{ profile.education }}</div> 
+					<div class="general_text">
+					{% if profile.education %}
+					{{ profile.education }}
+					{% else %}
+					unavailable
+                    {% endif %}					
+					</div> 
 					
 					
 					
@@ -102,9 +47,16 @@
 					
 					<div class="general_title">Bio</div> 
 					<div class="dotted_divider"></div> 
-					<div class="general_text"> {{ profile.bio }}</div> 
+					<div class="general_text">
+					{% if profile.bio %}
+					{{ profile.bio }}
+					{% else %}
+					unavailable
+                    {% endif %}		
+					</div> 
 					
 				</div> 
  
-			</div> 
+
+		
 {% endblock %}

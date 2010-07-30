@@ -37,8 +37,10 @@ class RegistrationManager(models.Manager):
                 return user
         return False
     
-    def create_inactive_user(self, username, email, password, site, send_email=True):
+    def create_inactive_user(self, username, first_name, last_name, email, password, site, send_email=True):
         new_user = User.objects.create_user(username, email , password)
+        new_user.first_name = first_name
+        new_user.last_name = last_name
         new_user.is_active = False
         new_user.save()
 

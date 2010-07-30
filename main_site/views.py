@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 
 # Logging In With Email Addresses in Django                
 # http://www.davidcramer.net/code/224/logging-in-with-email-addresses-in-django.html
@@ -31,7 +32,7 @@ class EmailOrUsernameModelBackend(object):
 def index_view(request):
     #set up the dictonary
     context = {}
-
+    #context['form'] = AuthenticationForm()
     return render_to_response('index.html',context,context_instance=RequestContext(request))
 
 def auth_view_login(request):
@@ -47,7 +48,6 @@ def auth_view_login(request):
                 login(request, user)
                 # Redirect to a success page.
                 return HttpResponseRedirect(reverse('profile_view')) 
-                #return render_to_response('profiles/profile.html',context,context_instance=RequestContext(request))        
             else:
                 # Return a 'disabled account' error message
                 return render_to_response('index.html',context,context_instance=RequestContext(request))        

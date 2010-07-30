@@ -1,74 +1,9 @@
-{% extends "registration/base.html" %}
-
-{% block navigation %} {% endblock %}
+{% extends "base.html" %}
 
 
 
 {% block content %}	
-	
-		<!-- Sidebar --> 
-			
-		<div class="content"> 
-		
-			
-			
-			<!-- Sidebar --> 
 
-			
-			
-			<!-- Right Column --> 
-			
-			<div class="right_column"> 
-				
-				
-				
-				<!-- Main Navigation --> 
-			
-				<div class="main_navigation">	
-			
-			
-			
-					<!-- Main Navigation --> 
-			
-					<div class="main_tab_container"> 
-					
-						<a href="profile.htm" class="main_tab_selected" onclick="return false">Profile</a> 
-						<a href="gallery.htm" class="main_tab">Gallery</a>		
-						<a href="forum.htm" class="main_tab">Forum</a> 
-				
-					</div> 
-				
-				
-					
-					<!-- Search --> 
-				
-					<form> 
-				
-						<div class="search_select"> 
-						
-							<a href="" class="search_type">People</a> 
-							<a href="" class="search_type">Tags</a> 
-							<a href="" class="search_type">Topics</a> 
-							
-						</div> 
-				
-						<div class="search_form"> 
-					
-							<div class="search_link_container"> 
-							
-								<a href="" class="search_link" onclick="return false">Select</a> 
-								
-							</div> 
-					
-							<input type="text" class="search_text" name="" value="Search" /> 
-							<input type="submit" class="search_submit" value="Submit" /> 
-						
-						</div> 
-				
-					</form> 
-			
-				</div> 
-				
 				
 				
 				<!-- Profile Edit Content --> 
@@ -88,10 +23,14 @@
 						<!-- Photo Upload Left --> 
 						
 						<div class="photo_upload_left">
-							<img src="/static/{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="223px" height="223px"/>
+                            {% if tmp_mugshot %}
+						<img src="/static/{{ tmp_mugshot  }} " alt="" width="325px" height="325px"/>
+							{% else %}
+                                <img src="/static/{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="325px" height="325px"/>
+						    {% endif %}
 						</div>
 						
-						
+						<iframe id="hiddenupload" name="hiddenupload" style="display:none;"></iframe>
 						
 						<!-- Photo Upload Right --> 
 						
@@ -100,11 +39,15 @@
 							<div class="photo_upload_title">Select an image file on your computer</div>
 							<div class="dotted_divider"></div>
 							<div class="upload_submit_container">
-                                <form action="." method="post" enctype="multipart/form-data" class="profile_form">{% csrf_token %}
-									   {{ profile_form.mugshot }}
-									<div class="upload_sumbit_label">No File Chosen</div>
-                                <input class="menu_button_right_selected" type="submit" value="Update Profile">
-											
+                                <form action="/guru/" method="post" target="hiddenupload" enctype="multipart/form-data" class="profile_form">
+                                <input type="hidden" value="profile_image"  name= "type" />
+                                {% csrf_token %}	
+                                	<div class="choose_file_container">
+										<br />
+										<div class="choose_file">Choose File</div>
+										{{ image_tank.image }}
+									</div>	
+       
 								</form>
 							</div>
 							<div class="upload_submit_note_01">* Image must be square and a minimum of <br />325 pixels X 325 pixels</div> 
@@ -124,18 +67,54 @@
 						
 					</div>
 					
-					 <form action="." method="post" enctype="multipart/form-data" class="profile_form">{% csrf_token %}
-    
-						<!-- Name -->
-										
-						<div class="general_title">Name <div class="general_right_float"> 100 of 400 characters</div></div> 
-						 
-						<div class="dotted_divider"></div>
+					 <form action="." method="post" enctype="multipart/form-data" class="profile_form">
+                        <input id="imghash" type="hidden" value=""  name= "imagehash" />
+					     {% csrf_token %}
 
-						<div class="edit_input_container_01">
-							<textarea class="edit_input_01">Cody Pallo</textarea>
+    
+						<!-- Edit Container Left -->
+						
+						
+						<div class="edit_left_column"> 
+							
+							
+							
+							<!-- First Name -->
+										
+							<div class="general_title">First Name<div class="general_right_float"> 100 of 400 characters</div></div> 
+						 
+							<div class="dotted_divider"></div>
+
+							<div class="edit_input_container_05">
+                                 {% if user_form.first_name.errors %}{{ user_form.first_name.html_error_list }}{% endif %}
+							     {{ user_form.first_name }}
+							</div>
+						
 						</div>
 					
+
+
+						<!-- Edit Container Right -->
+						
+						
+						<div class="edit_right_column"> 
+										
+										
+										
+							<!-- Last Name -->
+					
+							<div class="general_title">Last Name <div class="general_right_float"> 100 of 400 characters</div></div>
+							<div class="dotted_divider"></div>
+					
+							<div class="edit_input_container_05">
+                                 {% if user_form.last_name.errors %}{{ user_form.last_name.html_error_list }}{% endif %}
+							     {{ user_form.last_name }}
+							</div>
+
+						</div>
+						<br class="clear" />
+						
+						
 					
 						<!-- Quote -->
 					
@@ -154,7 +133,7 @@
 						<div class="dotted_divider"></div> 
 						
 						<div class="edit_input_container_01">
-							<textarea class="edit_input_01">Los Angeles</textarea>
+                            {{ profile_form.location}}
 						</div>
 					
 
@@ -196,12 +175,25 @@
 					<input class="menu_button_right_selected" type="submit" value="Update Profile">
 											
 					</div>
-					
-				</div> 
-						</form>			
+				
+				</form>
+						
+			</div>
+
 {% endblock %}	 
 
-{% block footer %}			
+{% block footer %}		
+
+<script>
+$("#hiddenupload").load(function(){
+     var data = eval($(this).contents().text());
+     $(".photo_upload_left img").attr("src", '/static/' + data[0].fields.image);
+     $("#imghash").val(data[0].fields.hash);
+     $("#id_image").removeAttr("disabled")
+     
+});
+</script>
+
 			<!-- Footer --> 
 			
 			<div class="footer"> 

@@ -25,15 +25,18 @@
 
 	<!-- Page -->
 
-	<div class="page">
 		
+	<!-- Page -->
+
+	<div class="page">
+	
 		
 		
 		<!-- Header -->
 	
 		<div class="header">
 		
-		
+				
 		
 			<!-- Top Navigation -->				
 				
@@ -43,12 +46,12 @@
 
 				<!-- About -->
 
-				<a href="/help" class="top_tab">Help</a>
-			
-			
-			
-				<!-- Registration -->
+				<a href="help.htm" class="help_tab">Help</a>
 				
+
+				
+				<!-- Registration -->
+
 				{% if request.user.is_authenticated %}
 				
 				 <a href="/accounts/logout/" class="top_tab">Logout</a>				
@@ -57,30 +60,46 @@
                 {% else %}
                 
 				  <a href="/accounts/register/" class="top_tab">Register</a>
-				  <!-- Login -->
 
-				  <a href="/accounts/login/" class="top_tab">Login</a>	
+				<!-- Login -->
+
+				<a href="#" class="login_tab" onclick="return false">Login</a>	
+				
+				
+				<div id="top_login_form_position">
+				
+					<div id="top_login_form_inner">
+						<form method="post" action="/accounts/login/">{% csrf_token %}
+							<div class="top_login_label">Email:</div> <input type="text" class="top_login_input" name="email" />
+							<div class="top_login_label">Password:</div> <input type="text" class="top_login_input" name="password" />
+							<input type="submit" class="top_login_submit" value="Submit" />
+						</form>
+					</div>
+				
+				</div>
                {% endif %}
                
 			</div>	
-				
+	
 				
 				
 			<!-- Logo --> 
 				
 			<a href="/"><img src="/static/images/art_acclaim_logo.gif" class="logo" alt="" /></a> 
-
+				
+				
+	
 		</div>
-
-
-
-
-		<!-- Navbar -->
+		
+	
+	
+		<!-- Sidebar -->
 			
 		<div class="content">
 		
 		
-{% block sidebar %}			
+{% block sidebar %}		
+	
 			<!-- Sidebar --> 
 			
 			<div class="sidebar_02"> 
@@ -91,8 +110,8 @@
 				<div class="dotted_divider"></div> 
 								
 				
-				<div class="sidebar_title"><a href="profile.htm" onclick="return false">Info</a></div> 
-				<div class="sidebar_title"><a href="portfolio.htm">Portfolio</a><a href="portfolio.htm" class="portfolio">12</a></div>				
+				<div class="sidebar_title"><a href="/profile" onclick="return false">Info</a></div> 
+				<div class="sidebar_title"><a href="/portfolio">Portfolio</a><a href="portfolio.htm" class="portfolio">12</a></div>				
 				
 				<div class="dotted_divider"></div> 
 				<div class="sidebar_title"><a href="messages.htm">Messages</a><a href="messages.htm" class="messages">12</a></div>
@@ -104,13 +123,17 @@
 				<div class="sidebar_title">Fans<div class="sidebar_section_title">1003</div></div> 
 				
 			</div> 
+			
 {% endblock %}	
+
+{% block navigation %}
 			<!-- Right Column -->
 			
 			<div class="right_column">
 
 
-{% block navigation %}
+
+
 				<!-- Main Navigation -->
 			
 				<div class="main_navigation">	
@@ -121,7 +144,7 @@
 			
 					<div class="main_tab_container">
 					
-						<a href="profile.htm" class="main_tab">Profile</a>
+						<a href="/profile" class="main_tab">Profile</a>
 						<a href="gallery.htm" class="main_tab">Gallery</a>		
 						<a href="forum.htm" class="main_tab">Forum</a>
 
@@ -165,34 +188,50 @@
 			
 				</div>
 
-			</div>
+			
 
 {% endblock %}	
-			<br class="clear" />
+
+
+
+{% block content %}{% endblock %}	
+
 			
-        {% block content %}{% endblock %}	
+
 {% block footer %}	
-
-
 			
-			<!-- Footer -->
-	
-			<div class="footer">
-					
-				<div class="small_print_01">
-<a href="http://www.chimesandrhymes.com" target="_blank">Blog</a> / <a href="/about">About</a> / <a href="/privacy">Privacy</a> / <a href="/terms">Terms 0f Use</a><br />
-
-					<a href="http://www.groundworkcounsel.com" target="_blank">Site Design By Groundwork Counsel</a><br />
-					<div class="home_copyright">
-						<span class="helvetica">&copy;</span> Art Acclaim 2010 
-					</div>
-				</div>	
-				
 			</div>
 			
-		</div>
-	
-	</div>
+			<!-- Hidden Close Dialog --> 
+		
+			<div class="hide">
+				<div id="friend_close_dialog">
+					<a href="" onclick="$.fancybox.close(); return false" class="friend_close_dialog_button_01">Delete Kevin Postal</a> 
+					<a href="" onclick="$.fancybox.close(); return false" class="friend_close_dialog_button_02">Cancel</a>
+				</div>
+			</div>
+		
+		
+			
+			<!-- Footer --> 
+			
+			<div class="footer"> 
+					
+				<div class="small_print_02"> 
+<a href="http://www.chimesandrhymes.com" target="_blank">Blog</a> / <a href="/about">About</a> / <a href="/privacy">Privacy</a> / <a href="/terms">Terms 0f Use</a><br />
+					Site Design By Groundwork Counsel<br /> 
+					<span class="helvetica">&copy;</span> Art Acclaim 2010 
+				</div> 
+					
+					
+				<div class="profile_acclaim"> 
+					<div class="profile_acclaim_box">101K</div> 
+					<div class="profile_acclaim_title">Acclaim</div> 
+				</div>
+				
+			</div> 
+			
+		</div> 
 
 </body>
 </html>

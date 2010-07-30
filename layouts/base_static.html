@@ -57,9 +57,23 @@
                 {% else %}
                 
 				  <a href="/accounts/register/" class="top_tab">Register</a>
-				  <!-- Login -->
 
-				  <a href="/accounts/login/" class="top_tab">Login</a>	
+				<!-- Login -->
+
+				<a href="#" class="login_tab" onclick="return false">Login</a>	
+				
+				
+				<div id="top_login_form_position">
+				
+					<div id="top_login_form_inner">
+						<form>
+							<div class="top_login_label">Email:</div> <input type="text" class="top_login_input" />
+							<div class="top_login_label">Password:</div> <input type="text" class="top_login_input" />
+							<input type="submit" class="top_login_submit" value="Submit" />
+						</form>
+					</div>
+				
+				</div>
                {% endif %}
                
 			</div>	
@@ -80,12 +94,12 @@
 		<div class="content">
 		
 		
-{% block sidebar %}			
+{% block sidebar_01 %}			
 <!-- Sidebar -->
 
 <div class="sidebar_01">
     
-    <a href="join.htm">Join</a>						
+    <a href="/accounts/register/">Join</a>						
             
 </div>
 {% endblock %}	
@@ -105,7 +119,7 @@
 			
 					<div class="main_tab_container">
 					
-						<a href="profile.htm" class="main_tab">Profile</a>
+						<a href="/profile" class="main_tab">Profile</a>
 						<a href="gallery.htm" class="main_tab">Gallery</a>		
 						<a href="forum.htm" class="main_tab">Forum</a>
 
@@ -152,11 +166,15 @@
 			</div>
 
 {% endblock %}	
-			<br class="clear" />
-			
-        {% block content %}{% endblock %}	
-{% block footer %}	
 
+			
+			<br class="clear" />			
+{% block content %}{% endblock %}	
+
+
+{% block footer %}	
+			
+			</div>
 
 			
 			<!-- Footer -->
