@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 
 class Art_Work(models.Model):
     user = models.ForeignKey(User, unique=False)
-    image = models.FileField(_('image'), upload_to='art_works', blank=True)
-    creation_date = models.DateField(auto_now_add=True)
+    image = models.FileField(upload_to='art_works', blank=True)
+    creation_date = models.DateField(blank=True)
+    last_modified = models.DateField(auto_now=True)
     title = models.CharField(max_length=300)
-    dimensions = models.CharField(max_length=100)
-    materials = models.CharField(max_length=100)
+    dimensions = models.CharField(max_length=100,blank=True)
+    materials = models.CharField(max_length=100,blank=True)

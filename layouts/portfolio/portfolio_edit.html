@@ -34,8 +34,15 @@
 							<div class="photo_upload_title">Select an image file on your computer</div>
 							<div class="dotted_divider"></div>
 							<div class="upload_submit_container">
-								<form>
-									<input type="submit" class="choose_file" value="Choose File" /><div class="upload_sumbit_label">No File Chosen</div>
+								 <form action="/guru/" method="post" target="hiddenupload" enctype="multipart/form-data" class="image_form">
+									<input type="hidden" value="portfolio_image"  name= "type" />
+									{% csrf_token %}	
+                                	<div class="choose_file_container">
+										<br />
+										<div class="choose_file">Choose File</div>
+										{{ image_tank.image }}
+									</div>	
+
 								</form>
 							</div>
 							<div class="upload_submit_note_02">* Image must be square and a minimum of <br />700 pixels X 490 pixels</div> 
@@ -53,7 +60,8 @@
 						<div class="dotted_divider"></div>
 
 						<div class="edit_input_container_01">
-							<textarea class="edit_input_01">Bucket Cello</textarea>
+						    {{ portfolio_form.title }}
+	
 						</div>
 						
 						
@@ -72,7 +80,7 @@
 							<div class="dotted_divider"></div>
 
 							<div class="edit_input_container_05">
-								<textarea class="edit_input_05">09.40.06</textarea>
+							 {{ portfolio_form.creation_date }}
 							</div>
 						
 						</div>
@@ -92,7 +100,7 @@
 							<div class="dotted_divider"></div>
 					
 							<div class="edit_input_container_05">
-								<textarea class="edit_input_05">6' x 4'</textarea>
+							 {{ portfolio_form.dimensions }}
 							</div>
 
 						</div>
@@ -106,7 +114,7 @@
 						<div class="dotted_divider"></div>
 					
 						<div class="edit_input_container_02">
-							<textarea class="edit_input_02">Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec</textarea>
+                            {{ portfolio_form.materials }}
 						</div>
  
  					</div>
@@ -133,6 +141,16 @@
 
 					</div>
 				</div> 
+<iframe id="hiddenupload" name="hiddenupload" style="display:none;"></iframe>
+<script>
+$("#hiddenupload").load(function(){
+     var data = eval($(this).contents().text());
+     $(".photo_upload_center_top img").attr("src", '/static/' + data[0].fields.image);
+     $("#imghash").val(data[0].fields.hash);
+     $("#id_image").removeAttr("disabled")
+     
+});
+</script>
 
 			{% endblock %}
 			

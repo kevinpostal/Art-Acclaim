@@ -36,13 +36,6 @@ def profile_view(request, user_id=""):
         except:
             pass
          
-         
-        if request.user.id:
-            try:
-                context['mugshot'] =  Profile.objects.get(id=request.user.id).mugshot.url.__str__()
-            except:
-                pass
-            
         context['user'] = user
         context['name'] = context['user'].get_full_name()
         
@@ -55,12 +48,6 @@ def profile_view(request, user_id=""):
         context = {}
         context['profile'] = Profile.objects.get(user=request.user)
         context['user'] = User.objects.get(username=request.user)
-       
-        try:
-            context['mugshot'] =  context['profile'].mugshot.url.__str__()
-        except:
-            pass
-
         context['name'] = context['user'].get_full_name()
         
         return render_to_response('profiles/profile.html', context, context_instance=RequestContext(request))
@@ -94,7 +81,6 @@ def profile_edit(request, template_name='profiles/profile_edit.html'):
             context = {
                 'profile_form': profile_form,
                 'user_form': user_form,
-                'mugshot': mugshot
             }
     else:
         profile = Profile.objects.get(user=request.user)
@@ -108,6 +94,5 @@ def profile_edit(request, template_name='profiles/profile_edit.html'):
             'profile_form': ProfileForm(instance=profile),
             'image_tank': Image_Upload_Form(),            
             'user_form': UserForm(instance=request.user),
-            'mugshot': mugshot
         }
     return render_to_response(template_name, context, context_instance=RequestContext(request))

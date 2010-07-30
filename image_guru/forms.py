@@ -1,17 +1,20 @@
 from django import forms
 from django.forms import ModelForm,FileInput
 from image_guru.models import *
-
+import signals
 
 class Image_Upload_Form(ModelForm):
     class Meta:
         model = Image_Tank
         exclude = ('user','creation_date','hash')
         widgets = {
-            'image': FileInput(attrs={'class':'choose_file_button' , 'onchange': "$('.profile_form').eq(0).submit();$(this).attr('disabled','true');" }),
+            'image': FileInput(attrs={'class':'choose_file_button' , 'onchange': "$('.image_form').eq(0).submit();$(this).attr('disabled','true');" }),
       }
       
     def save(self,user_request):
+    
+        signals.image_uploaded.send(sender=self, image=self.cleaned_data['image'], type=self.cleaned_data['type'].__str__() )
+    
         from django.core.files.uploadedfile import SimpleUploadedFile
         from cStringIO import StringIO
         from PIL import Image, ImageOps
