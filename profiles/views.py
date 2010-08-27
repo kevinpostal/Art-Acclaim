@@ -55,26 +55,19 @@ def profile_view(request, user_id=""):
 @login_required
 def profile_edit(request, template_name='profiles/profile_edit.html'):
     """Edit profile."""
-    
-    mugshot = "" # Create an empty mugshot variable
-    
+
     if request.POST:
         profile = Profile.objects.get(user=request.user)
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
         user_form = UserForm(request.POST, instance=request.user)
         
-        try:
-            mugshot = profile.mugshot.url.__str__()
-        except:
-            pass
-            
         if profile_form.is_valid() and user_form.is_valid():
             profile_form.save()
             user_form.save()
             
             if request.POST['imagehash']:
-                img_move(request.POST['imagehash'],profile)
-               
+                profile.mugshot  = img_move(request.POST['imagehash'],profile)
+                profile.save()
             
             return HttpResponseRedirect(reverse('profile_view'))
         else:
@@ -84,12 +77,7 @@ def profile_edit(request, template_name='profiles/profile_edit.html'):
             }
     else:
         profile = Profile.objects.get(user=request.user)
-        
-        try:
-            mugshot = profile.mugshot.url.__str__()
-        except:
-            pass
-            
+
         context = {
             'profile_form': ProfileForm(instance=profile),
             'image_tank': Image_Upload_Form(),            

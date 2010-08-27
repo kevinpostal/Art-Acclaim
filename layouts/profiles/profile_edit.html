@@ -23,11 +23,7 @@
 						<!-- Photo Upload Left --> 
 						
 						<div class="photo_upload_left">
-                            {% if tmp_mugshot %}
-						<img src="/static/{{ tmp_mugshot  }} " alt="" width="325px" height="325px"/>
-							{% else %}
-                                <img src="/static/{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="325px" height="325px"/>
-						    {% endif %}
+                                <img src="{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="325px" height="325px"/>
 						</div>
 						
 						<iframe id="hiddenupload" name="hiddenupload" style="display:none;"></iframe>
@@ -39,8 +35,8 @@
 							<div class="photo_upload_title">Select an image file on your computer</div>
 							<div class="dotted_divider"></div>
 							<div class="upload_submit_container">
-                                <form action="/guru/" method="post" target="hiddenupload" enctype="multipart/form-data" class="profile_form">
-                                <input type="hidden" value="profile_image"  name= "type" />
+                                <form action="/guru/" method="post" target="hiddenupload" enctype="multipart/form-data" class="image_form">
+                                <input type="hidden" value="mug_shot"  name= "type" />
                                 {% csrf_token %}	
                                 	<div class="choose_file_container">
 										<br />

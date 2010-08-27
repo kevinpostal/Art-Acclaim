@@ -22,7 +22,8 @@
 						<!-- Photo Upload Center 01 --> 
 						
 						<div class="photo_upload_center_top">
-							<img src="/static/images/portfolio_hero_blank.gif" alt="" />
+                           
+							<img src="{{ portfolio_image|default:'/static/images/portfolio_hero_blank.gif'}} "alt="" />
 						</div>
 						
 						
@@ -51,8 +52,9 @@
 						
 					</div>
 					
-					<form>
-					
+					<form action="." method="post" class="">
+                        <input id="imghash" type="hidden" value=""  name= "imagehash" />
+                        {% csrf_token %}	
 						<!-- Title -->
 										
 						<div class="general_title">Title <div class="general_right_float"> 100 of 400 characters</div></div> 
@@ -125,7 +127,7 @@
 										
 					<div class="menu_navigation_01">
 					
-						<a href="" class="menu_button_left">
+						<a href="../delete/" class="menu_button_left">
 							Delete Art Work
 						</a>
 						<a href="privacy.htm" class="menu_button_left">
@@ -134,16 +136,15 @@
 						<a href="terms.htm" class="menu_button_left">
 							Terms of Use
 						</a>
-						
-						<a href="" class="menu_button_right_selected">
-							Update Art Work
+						<input class="menu_button_right_selected" type="submit" value="Update Profile">
 						</a>
 
 					</div>
+					</form>
 				</div> 
 <iframe id="hiddenupload" name="hiddenupload" style="display:none;"></iframe>
 <script>
-$("#hiddenupload").load(function(){
+    $("#hiddenupload").load(function(){
      var data = eval($(this).contents().text());
      $(".photo_upload_center_top img").attr("src", '/static/' + data[0].fields.image);
      $("#imghash").val(data[0].fields.hash);

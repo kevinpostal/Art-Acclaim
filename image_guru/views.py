@@ -18,9 +18,10 @@ def image_render(request):
             
         if image_form.is_valid():
             image = image_form.save(request.user)
-
+            image = image[0][1] # Grabs the id of the image
+            
             return HttpResponse(
-                serializers.serialize("json", Image_Tank.objects.filter(id=image.id), fields=('image','hash')),
+                serializers.serialize("json", Image_Tank.objects.filter(id=image), fields=('image','hash')),
                 content_type = 'application/javascript; charset=utf8'
             ) 
     return HttpResponse()
@@ -33,13 +34,10 @@ def img_move(hash,profile):
     
     image_tank = Image_Tank.objects.get(hash=hash)
     img_store =  image_tank.image.path.__str__()
-    img_name =image_tank.image.name.split('/')[1][:-4].__str__()
+    img_name =image_tank.image.name.split('/')[1].__str__()
     image_data = open(img_store, 'rb').read()
 
-    profile.mugshot  = SimpleUploadedFile(img_name, image_data)
-    profile.save()
-    image_tank.delete()
-
+    return SimpleUploadedFile(img_name, image_data)
 
     
-    return
+#image_tank.delete()

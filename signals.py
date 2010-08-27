@@ -1,3 +1,3 @@
-from django.dispatch import Signal
+import django.dispatch
 
-image_uploaded = Signal(providing_args=["image", "type"])
+image_uploaded = django.dispatch.Signal(providing_args=["image", "type"])

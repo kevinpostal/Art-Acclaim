@@ -44,29 +44,36 @@
 					
 					
 					<!-- Artwork --> 
-					
-					<div class="art_container">
-					
-						<div class="general_title_no_margin"><a href="">Bucket Cello</a><a href="portfolio_edit.htm" class="edit">Edit</a></div>
-						
-						<a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="Bucket Cello" class="art_hero"></a>
-						
-						<div class="art_info">
-							<img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
-							Artist: <a href="">Cody Pallo</a><br />
-							Dimensions: 6' x 4' <br />
-							Medium: Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec purus convallis conseq nec
-							<div class="art_dates">
-								Created: 09.40.06<br />
-								Exhibited: 08.20.10
-							</div>
-							<div class="mini_acclaim">
-								<a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
-							</div>					
-						</div>
-
-					</div>
-					
+					{% for item in portfolio %}
+                        <div class="{% if forloop.counter|divisibleby:'3' %} art_container_last{% else %}art_container{% endif %}">
+                        
+                            <div class="general_title_no_margin"><a href="">{{ item.title|truncatewords:3 }} </a>
+                            <a href="{{ item.id }}/edit/" class="edit">Edit</a>
+                            </div>
+                            
+                            {% if item.image %}
+                           
+                                <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '{{ MEDIA_URL }}{{ item.image }}' width=235px height=165px /></a>
+                            {% else %}
+                                <a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="{{ item.title }} " class="art_hero"></a>
+                            {% endif %}
+                            
+                            <div class="art_info">
+                                <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+                                Artist: <a href="">{{ item.user.get_full_name }}</a><br />
+                                Dimensions: {{ item.user.dimensions }} <br />
+                                Medium:  {{ item.user.materials }}
+                                <div class="art_dates">
+                                    Created: {{ item.user.last_modified }}<br />
+                                    Exhibited: {{ item.user.creation_date }}
+                                </div>
+                                <div class="mini_acclaim">
+                                    <a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+                                </div>					
+                            </div>
+    
+                        </div>
+                    {% endfor %}
 						
 								
 					<br class="clear" />

@@ -3,9 +3,10 @@ from django.forms import ModelForm, Textarea,FileInput
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
 from portfolio.models import *
+
 class PortfolioForm(ModelForm):
     class Meta:
-        model = Art_Work
+        model = Portfolio
         exclude = ('user',)
         widgets = {
             'title': Textarea(attrs={'class': 'edit_input_01'}),               
