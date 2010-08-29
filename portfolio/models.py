@@ -11,6 +11,7 @@ class Portfolio(models.Model):
     title = models.CharField(max_length=300)
     dimensions = models.CharField(max_length=100,blank=True)
     materials = models.CharField(max_length=100,blank=True)
+    hash =  models.CharField(max_length=300)
     
     def __unicode__(self):
         return u'%s [user: %s]' % (self.title, self.user.id)

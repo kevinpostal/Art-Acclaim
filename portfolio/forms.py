@@ -7,7 +7,7 @@ from portfolio.models import *
 class PortfolioForm(ModelForm):
     class Meta:
         model = Portfolio
-        exclude = ('user',)
+        exclude = ('user','hash')
         widgets = {
             'title': Textarea(attrs={'class': 'edit_input_01'}),               
             'materials': Textarea(attrs={'class': 'edit_input_02' }),              

@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from main_site.views import index_view
 from image_guru.views import image_render
-import settings
+from django.conf import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()

@@ -86,7 +86,8 @@ def portfolio_add(request):
                 title=title,
                 creation_date=creation_date,
                 dimensions=dimensions,
-                materials=materials
+                materials=materials,
+                hash=request.POST['imagehash']
                 )
             portfolio.save()
             return HttpResponseRedirect(reverse('portfolio_view'))
