@@ -117,6 +117,13 @@ def xmlhttprequest_vote_on_object(request, model, direction,
             Contains an error message if the vote was not successfully
             processed.
     """
+    if object_id:
+        try:
+            object_id = model._default_manager.get(hash__exact=object_id.__str__).id  # Grabs Object id from hash
+        except ObjectDoesNotExist:
+            return json_error_response('No %s found for %s.' % (model._meta.verbose_name, object_id))
+    
+    
     if request.method == 'GET':
         return json_error_response(
             'XMLHttpRequest votes can only be made using POST.')

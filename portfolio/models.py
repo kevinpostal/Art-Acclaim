@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# Create your models here.
-
+from voting.models import Vote
+        
 class Portfolio(models.Model):
     user = models.ForeignKey(User, unique=False)
     image = models.FileField(upload_to='portfolio', blank=True)
@@ -12,6 +11,12 @@ class Portfolio(models.Model):
     dimensions = models.CharField(max_length=100,blank=True)
     materials = models.CharField(max_length=100,blank=True)
     hash =  models.CharField(max_length=300)
+    
+    def _get_vote(self):
+        "Returns the objects's score"
+        return Vote.objects.get_score(self)
+    vote = property(_get_vote)
+    
     
     def __unicode__(self):
         return u'%s [user: %s]' % (self.title, self.user.id)

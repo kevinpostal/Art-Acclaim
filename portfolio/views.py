@@ -12,10 +12,14 @@ from image_guru.forms import *
 from image_guru.views import img_move
 from django.conf.urls.defaults import handler404, handler500
 
+
 @login_required
 def portfolio_view(request):
     context = {}
     context['portfolio'] = Portfolio.objects.filter(user=request.user)
+
+    
+
     return render_to_response('portfolio/portfolio.html', context, context_instance=RequestContext(request))
 
 @login_required

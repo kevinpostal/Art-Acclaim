@@ -68,7 +68,7 @@
                                     Exhibited: {{ item.user.creation_date }}
                                 </div>
                                 <div class="mini_acclaim">
-                                    <a href="" class="acclaim_plus"></a><a href="" class="acclaim_minus"></a><div class="mini_acclaim_box">101K</div>
+                                    <a href="" onclick='return upVote("{{item.hash}}",this)' class="acclaim_plus"></a><a href="" onclick='return downVote("{{item.hash}}",this)' class="acclaim_minus"></a><div class="mini_acclaim_box">{{ item.vote.score }}</div>
                                 </div>					
                             </div>
     
@@ -88,7 +88,24 @@
 			<br class="clear" />
 			
 				
-
+<script>
+    function upVote(hash,elt) 
+    {
+       $.post("/portfolio/vote/" +hash+ "/up/", function(msg){
+        $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
+                   }, "json");
+                return false;
+    }
+    
+    function downVote(hash,elt) 
+    {
+       $.post("/portfolio/vote/" +hash+ "/down/", function(msg){
+        $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
+                   }, "json");
+                return false;
+    }
+        
+</script>
 			
 			
 				<!-- Art Footer --> 
