@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load voting_tags %}
 
 
 
@@ -38,19 +39,22 @@
 						<a href="/portfolio/add/" class="menu_button_right">
 							<div class="new_message_plus">+</div>New Art Work
 						</a>
-					
+
 					</div>
-					
-					
-					
+
+
 					<!-- Artwork --> 
 					{% for item in portfolio %}
+					{% vote_by_user user on item as vote %}
+					
+					
+					
                         <div class="{% if forloop.counter|divisibleby:'3' %} art_container_last{% else %}art_container{% endif %}">
                         
                             <div class="general_title_no_margin"><a href="">{{ item.title|truncatewords:3 }} </a>
                             <a href="{{ item.id }}/edit/" class="edit">Edit</a>
                             </div>
-                            
+
                             {% if item.image %}
                            
                                 <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '{{ MEDIA_URL }}{{ item.image }}' width=235px height=165px /></a>
@@ -59,8 +63,12 @@
                             {% endif %}
                             
                             <div class="art_info">
-                                <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
-                                <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" />
+                                {% if vote %} 
+                                    <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" /> 
+                                {% else %}
+                                
+                                {% endif %}
+                                
                                 Artist: <a href="">{{ item.user.get_full_name }}</a><br />
                                 Dimensions: {{ item.user.dimensions }} <br />
                                 Medium:  {{ item.user.materials }}
@@ -90,17 +98,24 @@
 			
 				
 <script>
+
+    var img = '<img class="acclaim_star" alt="" src="/static/images/acclaim_star.gif">';
     function upVote(hash,elt) 
     {
+       //$(elt).removeAttr('onclick') ;
        $.post("/portfolio/vote/" +hash+ "/up/", function(msg){
         $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
+        $(elt).parents('.art_info').prepend(img);
                    }, "json");
                 return false;
     }
     
     function downVote(hash,elt) 
     {
-       $.post("/portfolio/vote/" +hash+ "/down/", function(msg){
+  
+       $.post("/portfolio/vote/" +hash+ "/clear/", function(msg){
+        $(elt).parents('.art_info').find("img").remove();
+  
         $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
                    }, "json");
                 return false;

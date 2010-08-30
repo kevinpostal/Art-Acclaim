@@ -63,7 +63,8 @@ TEMPLATE_CONTEXT_PROCESSORS =  (
         "django.core.context_processors.i18n",
         "django.core.context_processors.media",
         "django.core.context_processors.request",
-        'context_processors.mugshot',
+        'context_processors.user_context',
+        
 )
 
 INTERNAL_IPS = ('127.0.0.1','10.176.105.169','75.82.209.7')
@@ -76,7 +77,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'request.middleware.RequestMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
