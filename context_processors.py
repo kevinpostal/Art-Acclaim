@@ -14,8 +14,9 @@ def user_context(request):
         try:
             mugshot = Profile.objects.get(id=request.user.id).mugshot.url.__str__()
             portfolio = Portfolio.objects.filter(user=request.user)
-            portfolio_count = portfolio.count().__str__()
+            portfolio_count = len(portfolio)
             vote_hold =  Vote.objects.get_scores_in_bulk(portfolio)
+            
             for k in list ( portfolio.values() ) :
                 fan_count.append( k['id'] )
 

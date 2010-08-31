@@ -151,5 +151,26 @@ $(document).ready(function() {
 		
 	});
 	
-	
-	
+// Acclaim System
+    var img = '<img class="acclaim_star" alt="" src="/static/images/acclaim_star.gif">';
+    function upVote(hash,elt) 
+    {
+       //$(elt).removeAttr('onclick') ;
+       $.post("/portfolio/vote/" +hash+ "/up/", function(msg){
+        $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
+        $(elt).parents('.art_info').prepend(img);
+                   }, "json");
+                return false;
+    }
+    
+    function downVote(hash,elt) 
+    {
+  
+       $.post("/portfolio/vote/" +hash+ "/clear/", function(msg){
+        $(elt).parents('.art_info').find("img").remove();
+  
+        $(elt).parent().find(".mini_acclaim_box").html(msg.score.score);
+                   }, "json");
+                return false;
+    }
+

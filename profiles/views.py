@@ -9,6 +9,7 @@ from profiles.models import *
 from profiles.forms import *
 from image_guru.views import img_move
 from image_guru.forms import *
+from portfolio.models import *
 
 def profile_list(request):
     return list_detail.object_list(
@@ -23,14 +24,14 @@ def profile_view(request, user_id=""):
 #Check if request is for your profile or another users
     if user_id:
         try:
-            user = User.objects.get(id__iexact=user_id)
+            user = User.objects.get(profile=user_id)
         except User.DoesNotExist:
             raise Http404
             
-        profile = Profile.objects.get(user=user)
+        profile = Profile.objects.get(id=user_id)
         context = {}
         context['profile'] = profile
-       
+        context['portfolio'] = Portfolio.objects.filter(user=user_id)
         try:
             context['user_image'] =  context['profile'].mugshot.url.__str__()
         except:

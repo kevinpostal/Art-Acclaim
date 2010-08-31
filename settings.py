@@ -53,7 +53,6 @@ SECRET_KEY = '$z8ps0bs=e4s**dz)--o42!#*rsrl=b-n0n)+(!0c*-s9ihq!j'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 
@@ -82,7 +81,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
-#    'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
+    'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
 )
 
 
@@ -148,13 +147,28 @@ INSTALLED_APPS = (
     'profiles',
     'portfolio',
     'image_guru',
-   #'django_extensions',
+#    'devserver', 
+    'django_extensions',
 
 )
 
-#django-request
+#django-devserver
+
+DEVSERVER_MODULES = (
+    'devserver.modules.sql.SQLRealTimeModule',
+    'devserver.modules.sql.SQLSummaryModule',
+    'devserver.modules.profile.ProfileSummaryModule',
+
+    # Modules not enabled by default
+    'devserver.modules.ajax.AjaxDumpModule',
+    'devserver.modules.profile.MemoryUseModule',
+    'devserver.modules.cache.CacheSummaryModule',
+    'devserver.modules.request.SessionInfoModule',
+)
+DEVSERVER_IGNORED_PREFIXES = ['/static']
+
 REQUEST_IGNORE_PATHS = (
-        r'^media/(.*)',
+        r'^static/(.*)',
         r'^favicon\.ico|favicon\.ico/$',
         r'^__debug__/',
 		r'^tinymce/(.*)',
