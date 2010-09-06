@@ -81,7 +81,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
+ #   'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
 )
 
 
@@ -139,8 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.admin',
-    'debug_toolbar',
-    'djangodblog',
+ #   'debug_toolbar',
+ #   'djangodblog',
     'voting',
     'request',
     'registration',
@@ -148,7 +148,7 @@ INSTALLED_APPS = (
     'portfolio',
     'image_guru',
 #    'devserver', 
-    'django_extensions',
+#    'django_extensions',
 
 )
 

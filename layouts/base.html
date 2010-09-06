@@ -47,7 +47,7 @@
 
 				<!-- About -->
 
-				<a href="help.htm" class="help_tab">Help</a>
+				<a href="/help" class="help_tab">Help</a>
 				
 
 				
@@ -72,7 +72,7 @@
 					<div id="top_login_form_inner">
 						<form method="post" action="/accounts/login/">{% csrf_token %}
 							<div class="top_login_label">Email:</div> <input type="text" class="top_login_input" name="email" />
-							<div class="top_login_label">Password:</div> <input type="text" class="top_login_input" name="password" />
+							<div class="top_login_label">Password:</div> <input type="password" class="top_login_input" name="password" />
 							<input type="submit" class="top_login_submit" value="Submit" />
 						</form>
 					</div>

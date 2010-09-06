@@ -48,7 +48,7 @@
 			
 			
 				<!-- Registration -->
-				
+
 				{% if request.user.is_authenticated %}
 				
 				 <a href="/accounts/logout/" class="top_tab">Logout</a>				
@@ -66,9 +66,9 @@
 				<div id="top_login_form_position">
 				
 					<div id="top_login_form_inner">
-						<form>
-							<div class="top_login_label">Email:</div> <input type="text" class="top_login_input" />
-							<div class="top_login_label">Password:</div> <input type="text" class="top_login_input" />
+						<form method="post" action="/accounts/login/">{% csrf_token %}
+							<div class="top_login_label">Email:</div> <input type="text" class="top_login_input" name="email" />
+							<div class="top_login_label">Password:</div> <input type="password" class="top_login_input" name="password" />
 							<input type="submit" class="top_login_submit" value="Submit" />
 						</form>
 					</div>

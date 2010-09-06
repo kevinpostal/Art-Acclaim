@@ -29,16 +29,42 @@ def profile_view(request, user_id=""):
             raise Http404
             
         profile = Profile.objects.get(id=user_id)
+        user_portfolio = Portfolio.objects.filter(user=user_id)
         context = {}
-        context['profile'] = profile
-        context['portfolio'] = Portfolio.objects.filter(user=user_id)
+
+        vote_hold =  Vote.objects.get_scores_in_bulk(user_portfolio)
+        acclaim_count = int()
+        
+        #Grabs Fan Count
+        fan_count = list()
+        for k in user_portfolio.values() :
+                fan_count.append( k['id'] )
+                
+        fan_total = list( Vote.objects.filter(object_id__in=fan_count ).values() )
+        fan_count = list() #clear list
+
+        for k in fan_total:
+            if k['user_id'].__int__() != int( user_id ):
+                fan_count.append( k['user_id'] )
+                
+        fan_count = len( list(set(fan_count)) ) #Removes duplicates and counts the list
+        #!Grabs Fan Count!
+        
+        # need to add the scores of all the objects
+        for k, v in vote_hold.items():
+            acclaim_count = acclaim_count + v['score']
+        
         try:
-            context['user_image'] =  context['profile'].mugshot.url.__str__()
+            context['user_image'] =  profile.mugshot.url.__str__()
         except:
             pass
          
         context['user'] = user
+        context['profile'] = profile
+        context['portfolio'] = user_portfolio
         context['name'] = context['user'].get_full_name()
+        context['profile_fan_count'] = fan_count
+        context['profile_vote_count'] = acclaim_count
         
         return render_to_response('profiles/friend_profile.html', context, context_instance=RequestContext(request))
     else:
