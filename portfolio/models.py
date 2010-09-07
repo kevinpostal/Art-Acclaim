@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from voting.models import Vote
-        
+from thumbs import ImageWithThumbsField
+
 class Portfolio(models.Model):
     user = models.ForeignKey(User, unique=False)
-    image = models.FileField(upload_to='portfolio', blank=True)
+    image = ImageWithThumbsField(upload_to='portfolio', sizes=( (48,48),(73,73),(190,125),(158,105),(223,223),(235,165) ) ,blank=True)
     creation_date = models.DateField(blank=True,null=True)
     last_modified = models.DateField(auto_now=True)
     title = models.CharField(max_length=300)

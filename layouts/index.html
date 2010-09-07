@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
-
-
+{% load profile_tags %}
 {% block sidebar %}
 <!-- Sidebar -->
 
@@ -92,8 +90,7 @@
 			</div>
 				
 			
-			
-			
+
 			<!-- Home Top Artists -->
 			
 			<div class="home_top_content_01">
@@ -101,16 +98,22 @@
 				<div class="section_title">Top Artists</div>
 				<div class="dotted_divider"></div>
 				
-				
-				
+
 				<!-- Top Artist 01 -->
-				
-				<div class="home_top_artists">
-					
+				{% for artist,score in top_artists %}
+
+                    {% if forloop.counter|divisibleby:5 %}
+                        <div class="home_top_artists_last">
+                    {% else %}
+                        <div class="home_top_artists">
+                    {% endif %}
+
+                {% get_mugshot artist.id %}
+                    <img src="{{ mug_shot }}">
 					<table class="home_top_item_caption">
 						<tr>
 							<td valign="center">
-								Cody Pallo
+								 {{ artist.get_full_name }}
 							</td>
 						</tr>
 					</table>
@@ -118,101 +121,12 @@
 					<div class="home_top_item_caption_bg"></div>
 						
 					<div class="home_mini_acclaim_01">
-						<div class="mini_acclaim_box">101K</div>
+						<div class="mini_acclaim_box">{{ score }}</div>
 					</div>
 				
 				</div>
 				
-				
-				
-				<!-- Top Artist 02 -->
-				
-				<div class="home_top_artists">
-					
-					<table class="home_top_item_caption">
-						<tr>
-							<td valign="center">
-								Cody Pallo
-							</td>
-						</tr>
-					</table>
-						
-					<div class="home_top_item_caption_bg"></div>
-						
-					<div class="home_mini_acclaim_01">
-						<div class="mini_acclaim_box">101K</div>
-					</div>
-				
-				</div>
-				
-				
-				
-				<!-- Top Artist 03 -->
-				
-				<div class="home_top_artists">
-					
-					<table class="home_top_item_caption">
-						<tr>
-							<td valign="center">
-								Cody Pallo
-							</td>
-						</tr>
-					</table>
-						
-					<div class="home_top_item_caption_bg"></div>
-						
-					<div class="home_mini_acclaim_01">
-						<div class="mini_acclaim_box">101K</div>
-					</div>
-				
-				</div>
-				
-				
-				
-				<!-- Top Artist 04 -->
-				
-				<div class="home_top_artists">
-					
-					<table class="home_top_item_caption">
-						<tr>
-							<td valign="center">
-								Cody Pallo
-							</td>
-						</tr>
-					</table>
-						
-					<div class="home_top_item_caption_bg"></div>
-						
-					<div class="home_mini_acclaim_01">
-						<div class="mini_acclaim_box">101K</div>
-					</div>
-				
-				</div>
-				
-				
-				
-				<!-- Top Artist 05 -->
-				
-				<div class="home_top_artists_last">
-					
-					<table class="home_top_item_caption">
-						<tr>
-							<td valign="center">
-								Cody Pallo
-							</td>
-						</tr>
-					</table>
-						
-					<div class="home_top_item_caption_bg"></div>
-						
-					<div class="home_mini_acclaim_01">
-						<div class="mini_acclaim_box">101K</div>
-					</div>
-				
-				</div>
-				
-			</div>
-			
+                {% endfor %}			
 			
 			
 			
@@ -224,41 +138,20 @@
 				<div class="dotted_divider"></div>
 				
 				<div class="home_recent_adds">
-					
-					<div class="home_top_art">
+                
+					{% for x, votes  in top_art %} 
+                        {% if forloop.counter|divisibleby:5 %}
+                            <div class="home_top_art_last">
+                        {% else %}
+                            <div class="home_top_art">
+                        {% endif %}
+                    
+                    <img src = " {{ x.image.url_190x125  }}" width = "190px" height="125px" />
 						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
+							<div class="mini_acclaim_box">{{ votes }}</div>
 						</div>
 					</div>
-					
-					
-					<div class="home_top_art">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_top_art">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_top_art">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
-					
-					<div class="home_top_art_last">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
+					{% endfor %}
 				</div>
 				
 			</div>
@@ -274,88 +167,20 @@
 				<div class="dotted_divider"></div>
 				
 				<div class="home_recent_adds">
-					
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-	
-	
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
-					
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
-					
+
+				{% for art in recent_art %}
+                    {% if forloop.counter|divisibleby:6 %}
 					<div class="home_recent_item_last">
+                    {% else %}
+                    <div class="home_recent_item">
+                    {% endif %}
+
+					<img src ="{{ art.image.url_158x105 }}" width="158xpx" height="105px"/>
 						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
+							<div class="mini_acclaim_box">{{ art.vote.score }}</div>
 						</div>
 					</div>
-					
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-	
-	
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
-					
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-		
-		
-					<div class="home_recent_item">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
-					
-					
-					<div class="home_recent_item_last">
-						<div class="home_mini_acclaim_02">
-							<div class="mini_acclaim_box">101K</div>
-						</div>
-					</div>
+                {% endfor %}   
 					
 				</div>
 				

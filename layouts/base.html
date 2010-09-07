@@ -106,11 +106,10 @@
 			<div class="sidebar_02"> 
 				
 				<a href="{{ profile.id }}" class="sidebar_hero_container">
-				<img src="{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt=""  class="sidebar_hero" width="223px" height="223px"   "/>
+				<img src="{{ mugshot|default:'/static/images/profile_hero_blank.gif'  }} " alt=""  class="sidebar_hero" width="223px" height="223px"   "/>
 				</a>
 				<div class="dotted_divider"></div> 
 								
-				{{ media_url }}
 				<div class="sidebar_title"><a href="/profile" onclick="return false">Info</a></div> 
 				<div class="sidebar_title"><a href="/portfolio">Portfolio</a><a href="portfolio.htm" class="portfolio">{{portfolio_count}}</a></div>				
 				

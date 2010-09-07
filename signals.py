@@ -5,7 +5,10 @@ from voting.models import Vote
 import django.dispatch
 
 def del_vote(sender, **kwargs):
-    Vote.objects.get(object_id=kwargs['instance'].id).delete()
+    try:
+        Vote.objects.get(object_id=kwargs['instance'].id).delete()
+    except:
+        pass
 
 post_delete.connect(del_vote, sender=Portfolio)
 

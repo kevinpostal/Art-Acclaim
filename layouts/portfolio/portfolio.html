@@ -45,7 +45,7 @@
 					{% for item in portfolio %}
 					{% vote_by_user user on item as vote %}
 					
-					
+
 					
                         <div class="{% if forloop.counter|divisibleby:'3' %} art_container_last{% else %}art_container{% endif %}">
                         
@@ -55,7 +55,7 @@
 
                             {% if item.image %}
                            
-                                <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '{{ MEDIA_URL }}{{ item.image }}' width=235px height=165px /></a>
+                                <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '{{ item.image.url_235x165 }}' width=235px height=165px /></a>
                             {% else %}
                                 <a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="{{ item.title }} " class="art_hero"></a>
                             {% endif %}
@@ -75,7 +75,9 @@
                                     Exhibited: {{ item.user.creation_date }}
                                 </div>
                                 <div class="mini_acclaim">
-                                    <a href="" onclick='return upVote("{{item.hash}}",this)' class="acclaim_plus"></a><a href="" onclick='return downVote("{{item.hash}}",this)' class="acclaim_minus"></a><div class="mini_acclaim_box">{{ item.vote.score }}</div>
+                                    <a href="" onclick='return upVote("{{item.hash}}",this)' class="acclaim_plus"></a>
+                                    <a href="" onclick='return downVote("{{item.hash}}",this)' class="acclaim_minus"></a>
+                                    <div class="mini_acclaim_box">{{ item.vote.score }}</div>
                                 </div>					
                             </div>
     

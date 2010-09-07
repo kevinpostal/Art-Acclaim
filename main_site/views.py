@@ -5,6 +5,10 @@ from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from portfolio.models import *
+from voting.models import Vote
+from heapq import nlargest 
+from operator import itemgetter 
 
 # Logging In With Email Addresses in Django                
 # http://www.davidcramer.net/code/224/logging-in-with-email-addresses-in-django.html
@@ -32,7 +36,28 @@ class EmailOrUsernameModelBackend(object):
 def index_view(request):
     #set up the dictonary
     context = {}
+    context['top_art'] = Vote.objects.get_top(Portfolio,limit=12)
+    context['recent_art'] = Portfolio.objects.order_by('creation_date')
+    hold = {}
+    acclaim_count = int()
+    user_list = User.objects.all()
+
+    for user in user_list:
+        user_portfolio = Portfolio.objects.filter(user=user)
+        vote_hold =  Vote.objects.get_scores_in_bulk(user_portfolio)
+        
+        if vote_hold: # make sure we got a list to work with
+            acclaim_count = 0 # Reset Acclaim Count
+            # need to add the scores of all the objects
+            for k, v in vote_hold.items():
+                acclaim_count = acclaim_count + v['score']
+                
+            hold[user] = acclaim_count # Set hold context to key:user value:count
+    
+    context['top_artists'] = nlargest(2, hold.iteritems(), itemgetter(1)) #sorts Dictonary by value
+
     #context['form'] = AuthenticationForm()
+
     return render_to_response('index.html',context,context_instance=RequestContext(request))
 
 def auth_view_login(request):
