@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load voting_tags %}
+{% block content %}	
+<!-- Gallery Content --> 
+<div class="general_content"> 
+
+    <!-- Gallery Header --> 
+    <div class="section_title">
+        Gallery 
+        <div class="general_right_float">
+            Sort: <a href="" class="general_link_selected">Exhibit Date</a> | <a href="" class="general_link">Acclaim</a>
+        </div>
+    </div> 
+    
+    <div class="dotted_divider"></div> 
+
+
+
+<!-- Artwork --> 
+{% for item in portfolio %}
+{% vote_by_user user on item as vote %}
+
+
+
+    <div class="{% if forloop.counter|divisibleby:'3' %} art_container_last{% else %}art_container{% endif %}">
+    
+        <div class="general_title_no_margin"><a href="">{{ item.title|truncatewords:3 }} </a>
+        <a href="{{ item.id }}/edit/" class="edit">Edit</a>
+        </div>
+
+        {% if item.image %}
+       
+            <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '{{ item.image.url_235x165 }}' width=235px height=165px /></a>
+        {% else %}
+            <a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="{{ item.title }} " class="art_hero"></a>
+        {% endif %}
+        
+        <div class="art_info">
+            {% if vote %} 
+                <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" /> 
+            {% else %}
+            
+            {% endif %}
+            
+            Artist: <a href="">{{ item.user.get_full_name }}</a><br />
+            Dimensions: {{ item.user.dimensions }} <br />
+            Medium:  {{ item.user.materials }}
+            <div class="art_dates">
+                Created: {{ item.user.last_modified }}<br />
+                Exhibited: {{ item.user.creation_date }}
+            </div>
+            <div class="mini_acclaim">
+                <a href="" onclick='return upVote("{{item.hash}}",this)' class="acclaim_plus"></a>
+                <a href="" onclick='return downVote("{{item.hash}}",this)' class="acclaim_minus"></a>
+                <div class="mini_acclaim_box">{{ item.vote.score }}</div>
+            </div>					
+        </div>
+
+    </div>
+{% endfor %}
+    
+
+    
+						
+        <br class="clear" />
+        <br />
+        
+
+    <div class="dotted_divider"></div> 	
+
+ </div> 
+
+<br class="clear" />
+			
+
+{% endblock %}					

@@ -36,17 +36,3 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return ('profile_detail', None, { 'username': self.user.username })
 
-
-class Link(models.Model):
-    """Service type model"""
-    profile = models.ForeignKey(Profile)
-    title = models.CharField(_('title'), max_length=100)
-    url = models.URLField(_('url'), verify_exists=True)
-
-    class Meta:
-        verbose_name = _('link')
-        verbose_name_plural = _('links')
-        db_table = 'user_links'
-
-    def __unicode__(self):
-        return u"%s" % self.title

@@ -59,10 +59,13 @@ def profile_view(request, user_id=""):
         except:
             pass
          
-        context['user'] = user
+        if request.user.is_authenticated():
+            context['user_profile'] = Profile.objects.get(id=request.user.id)      
+            context['user'] = user
+        
         context['profile'] = profile
         context['portfolio'] = user_portfolio
-        context['name'] = context['user'].get_full_name()
+        context['name'] = profile.user.get_full_name()
         context['profile_fan_count'] = fan_count
         context['profile_vote_count'] = acclaim_count
         

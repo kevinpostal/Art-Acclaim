@@ -6,5 +6,3 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'location')
 admin.site.register(Profile, ProfileAdmin)
 
-
-admin.site.register(Link)

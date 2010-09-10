@@ -1,2 +1,4 @@
 *.pyc
+static/portfolio/*
+static/mugshots/*
 settings_local.py

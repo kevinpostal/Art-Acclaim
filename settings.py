@@ -147,10 +147,22 @@ INSTALLED_APPS = (
     'profiles',
     'portfolio',
     'image_guru',
+    'hitcount',
 #    'devserver', 
 #    'django_extensions',
 
 )
+#Django-Hitcounter
+#http://blog.damontimm.com/django-hitcount-app-count-hits-views/
+#git://github.com/thornomad/django-hitcount.git
+
+HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 7 }
+HITCOUNT_HITS_PER_IP_LIMIT = 0
+#HITCOUNT_EXCLUDE_USER_GROUP = ( 'Editor', )
+
+
+
+
 
 #django-devserver
 

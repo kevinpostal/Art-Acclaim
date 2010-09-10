@@ -1,9 +1,45 @@
 {% extends "base.html" %}
 {% load voting_tags %}
+{% load hitcount_tags %}
+
+
+
+{% block sidebar %}		
+<script type="text/javascript">
+    $(document).ready(function() {
+        {% get_hit_count_javascript for profile %}
+    });
+</script>
+		
+			<!-- Sidebar --> 
+			
+			<div class="sidebar_02"> 
+				
+				<a href="{{ profile.id }}" class="sidebar_hero_container">
+				<img src="{{ mugshot|default:'/static/images/profile_hero_blank.gif'  }} " alt=""  class="sidebar_hero" width="223px" height="223px"   "/>
+				</a>
+				<div class="dotted_divider"></div> 
+								
+				<div class="sidebar_title"><a href="/profile" onclick="return false">Info</a></div> 
+				<div class="sidebar_title"><a href="/portfolio">Portfolio</a><a href="portfolio.htm" class="portfolio">{{portfolio_count}}</a></div>				
+				
+				<div class="dotted_divider"></div> 
+				<div class="sidebar_title"><a href="messages.htm">Messages</a><a href="messages.htm" class="messages"></a></div>
+				<div class="sidebar_title"><a href="friends.htm">Friends</a><a href="friends.htm" class="friends"></a></div>  
+				<div class="sidebar_title"><a href="views.htm">Recent Views</a><a href="views.htm" class="views">{% if is_logged_in %} {% get_hit_count for user_profile within "days=7,minutes=0" %} {% endif %}</a></div> 
+
+				<div class="dotted_divider"></div>	
+				<div class="sidebar_title">Total Views<div class="sidebar_section_title">{% if is_logged_in %}  {% get_hit_count for user_profile %} {% endif %}</div></div> 
+				<div class="sidebar_title">Fans<div class="sidebar_section_title">{{ fan_count }}</div></div> 
+				
+			</div> 
+			
+{% endblock %}	
+
+
 
 {% block content %}	
-	
-	
+
 
 				
 				<!-- Profile Content --> 
@@ -25,7 +61,7 @@
 										
 						<div class="friend_stat_title">Friends<div class="sidebar_section_title">1010</div></div> 
 
-						<div class="friend_stat_title">Total Views<div class="sidebar_section_title">1010</div></div> 
+						<div class="friend_stat_title">Total Views<div class="sidebar_section_title">{% get_hit_count for profile %}</div></div> 
 
 
 

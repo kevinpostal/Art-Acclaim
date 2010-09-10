@@ -33,7 +33,10 @@ def user_context(request):
         # need to add the scores of all the objects
         for k, v in vote_hold.items():
             acclaim_count = acclaim_count + v['score']
-    
+        
+        #Check for empty list
+    if not fan_count:
+        fan_count = 0
 
     
     context['mugshot'] = mugshot

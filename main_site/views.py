@@ -36,8 +36,7 @@ class EmailOrUsernameModelBackend(object):
 def index_view(request):
     #set up the dictonary
     context = {}
-    context['top_art'] = Vote.objects.get_top(Portfolio,limit=12)
-    context['recent_art'] = Portfolio.objects.order_by('creation_date')
+
     hold = {}
     acclaim_count = int()
     user_list = User.objects.all()
@@ -53,9 +52,11 @@ def index_view(request):
                 acclaim_count = acclaim_count + v['score']
                 
             hold[user] = acclaim_count # Set hold context to key:user value:count
-    
-    context['top_artists'] = nlargest(2, hold.iteritems(), itemgetter(1)) #sorts Dictonary by value
 
+    context['top_artists'] = nlargest(5, hold.iteritems(), itemgetter(1)) #sorts Dictonary by value
+    context['top_art'] = Vote.objects.get_top(Portfolio,limit=5)
+    context['recent_art'] = Portfolio.objects.order_by('creation_date')[:12]
+    
     #context['form'] = AuthenticationForm()
 
     return render_to_response('index.html',context,context_instance=RequestContext(request))

@@ -12,16 +12,20 @@ from image_guru.forms import *
 from image_guru.views import img_move
 from django.conf.urls.defaults import handler404, handler500
 
-
 @login_required
 def portfolio_view(request):
     context = {}
     context['portfolio'] = Portfolio.objects.filter(user=request.user)
 
-    
-
     return render_to_response('portfolio/portfolio.html', context, context_instance=RequestContext(request))
 
+@login_required
+def gallery_view(request):
+    context = {}
+    context['portfolio'] = Portfolio.objects.filter(user=request.user)
+
+    return render_to_response('portfolio/gallery.html', context, context_instance=RequestContext(request))
+    
 @login_required
 def portfolio_delete(request,portfolio_id):
     Portfolio.objects.filter(id=portfolio_id).delete()
@@ -44,17 +48,7 @@ def portfolio_edit(request,portfolio_id):
             title =  portfolio_form.cleaned_data['title']
             dimensions = portfolio_form.cleaned_data['dimensions']
             creation_date = portfolio_form.cleaned_data['creation_date']
-            '''
-           portfolio = Portfolio(
-                user=request.user,
-                image=image,
-                title=title,
-                creation_date=creation_date,
-                dimensions=dimensions,
-                materials=materials
-                )
-            portfolio.save()
-            '''    
+  
             portfolio_form.save()
             return HttpResponseRedirect(reverse('portfolio_view'))
 
