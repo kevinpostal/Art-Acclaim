@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load voting_tags %}
+{% load pagination_tags %}
 {% block content %}	
 <!-- Gallery Content --> 
 <div class="general_content"> 
@@ -17,6 +18,7 @@
 
 
 <!-- Artwork --> 
+{% autopaginate portfolio %}
 {% for item in portfolio %}
 {% vote_by_user user on item as vote %}
 
@@ -59,18 +61,27 @@
     </div>
 {% endfor %}
     
+<br class="clear" />
+<br />
 
     
-						
-        <br class="clear" />
-        <br />
-        
-
     <div class="dotted_divider"></div> 	
 
- </div> 
+</div> 
 
 <br class="clear" />
-			
+
+   
+
+    <!-- Art Footer --> 
+        
+    <div class="section_title">
+        <div class="general_right_float"> 
+            {% paginate %}
+        </div>
+    </div> 
+
+</div>		
+
 
 {% endblock %}					

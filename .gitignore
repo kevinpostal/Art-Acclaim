@@ -1,4 +1,5 @@
 *.pyc
 static/portfolio/*
 static/mugshots/*
+static/tmp/*
 settings_local.py

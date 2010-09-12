@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load profile_tags %}
+
+
 {% block sidebar %}
 <!-- Sidebar -->
 
@@ -76,9 +78,12 @@
 			</div>
 			<br class="clear" />
 	{% endblock %}		
-	
+
+
+
 {% block content %}
-		
+{% load cache %}
+{% cache 500 homepage %}
 			<!-- Home Banner -->
 			
 			<div class="home_banner">
@@ -185,8 +190,10 @@
 				</div>
 				
 			</div>
-			
+{% endcache %}
 {% endblock %}
+
+
 {% block footer %}	
 			<div class="footer">
 					

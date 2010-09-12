@@ -47,7 +47,7 @@ ADMIN_MEDIA_PREFIX = '/adminmedia/'
 SECRET_KEY = '$z8ps0bs=e4s**dz)--o42!#*rsrl=b-n0n)+(!0c*-s9ihq!j'
 
 #Cache System (memcache)
-#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -80,8 +80,13 @@ MIDDLEWARE_CLASSES = (
     'request.middleware.RequestMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
+    'tracking.middleware.BannedIPMiddleware',
+    'tracking.middleware.VisitorTrackingMiddleware',
+    'tracking.middleware.VisitorCleanUpMiddleware',
+    
 )
 
 
@@ -139,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.admin',
+    'pagination',
     'debug_toolbar',
  #   'djangodblog',
     'voting',
@@ -148,24 +154,25 @@ INSTALLED_APPS = (
     'portfolio',
     'image_guru',
     'hitcount',
+    'tracking',
+	'debug_toolbar',
 #    'devserver', 
 #    'django_extensions',
 
 )
+
+#Django-pagination
+PAGINATION_DEFAULT_PAGINATION = 15
+PAGINATION_DEFAULT_WINDOW = 2
+
 #Django-Hitcounter
 #http://blog.damontimm.com/django-hitcount-app-count-hits-views/
 #git://github.com/thornomad/django-hitcount.git
-
 HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 7 }
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 #HITCOUNT_EXCLUDE_USER_GROUP = ( 'Editor', )
 
-
-
-
-
 #django-devserver
-
 DEVSERVER_MODULES = (
     'devserver.modules.sql.SQLRealTimeModule',
     'devserver.modules.sql.SQLSummaryModule',

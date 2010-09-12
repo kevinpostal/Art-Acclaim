@@ -1,3 +1,5 @@
+{% load hitcount_tags %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head> 
@@ -98,9 +100,9 @@
 			
 		<div class="content">
 		
-		
+
 {% block sidebar %}		
-	
+
 			<!-- Sidebar --> 
 			
 			<div class="sidebar_02"> 
@@ -119,12 +121,14 @@
 				<div class="sidebar_title"><a href="views.htm">Recent Views</a><a href="views.htm" class="views"></a></div> 
 				
 				<div class="dotted_divider"></div>	
-				<div class="sidebar_title">Total Views<div class="sidebar_section_title"></div></div> 
+				<div class="sidebar_title">Total Views<div class="sidebar_section_title">{% if request.user.is_authenticated %} {% get_hit_count for our_profile %} {% endif %}</div></div> 
 				<div class="sidebar_title">Fans<div class="sidebar_section_title">{{ fan_count }}</div></div> 
 				
 			</div> 
 			
+ 
 {% endblock %}	
+
 
 {% block navigation %}
 			<!-- Right Column -->

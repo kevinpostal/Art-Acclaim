@@ -42,6 +42,7 @@ def _update_hit_count(request, hitcount):
         if qs.filter(ip__exact=ip).count() > hits_per_ip_limit:
             return False
 
+    
     # create a generic Hit object with request data
     hit = Hit(  session=session_key,
                 hitcount=hitcount,

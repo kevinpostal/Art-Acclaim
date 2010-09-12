@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/selectreverse
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/selectreverse/__init__.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/4/trunk/selectreverse/utils.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/trunk/selectreverse/models.py
+END

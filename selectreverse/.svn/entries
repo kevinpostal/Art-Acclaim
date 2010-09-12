@@ -1,0 +1,67 @@
+8
+
+dir
+4
+http://django-selectreverse.googlecode.com/svn/trunk/selectreverse
+http://django-selectreverse.googlecode.com/svn
+
+
+
+2010-02-04T08:40:39.051920Z
+4
+koen.biermans@werk.belgie.be
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+ea441128-b714-11de-b71e-ab0a53e69959
+
+tests
+dir
+
+__init__.py
+file
+
+
+
+
+2010-09-12T06:33:32.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2009-10-12T09:59:48.329629Z
+2
+koen.biermans@werk.belgie.be
+
+utils.py
+file
+
+
+
+
+2010-09-12T06:33:32.000000Z
+d0e8beba5d7424a166ac52cbe08b7576
+2010-02-04T08:40:39.051920Z
+4
+koen.biermans@werk.belgie.be
+
+models.py
+file
+
+
+
+
+2010-09-12T06:33:32.000000Z
+97d89305eb981be1b4d32d1984d4ca90
+2009-10-12T09:59:48.329629Z
+2
+koen.biermans@werk.belgie.be
+

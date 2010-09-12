@@ -57,7 +57,6 @@ def index_view(request):
     context['top_art'] = Vote.objects.get_top(Portfolio,limit=5)
     context['recent_art'] = Portfolio.objects.order_by('creation_date')[:12]
     
-    #context['form'] = AuthenticationForm()
 
     return render_to_response('index.html',context,context_instance=RequestContext(request))
 

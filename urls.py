@@ -4,6 +4,7 @@ from image_guru.views import image_render
 from django.conf import settings
 from hitcount.views import update_hit_count_ajax
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
