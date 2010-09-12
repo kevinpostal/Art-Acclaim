@@ -1,6 +1,7 @@
 *.pyc
 *.swap
 pip-log.txt
+wsgi_handler.py
 static/portfolio/*
 static/mugshots/*
 static/tmp/*
