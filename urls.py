@@ -1,9 +1,10 @@
 from django.conf.urls.defaults import *
-from main_site.views import index_view
+from main_site.views import index_view,recent_views
 from image_guru.views import image_render
 from django.conf import settings
 from hitcount.views import update_hit_count_ajax
 from django.contrib import admin
+from django.views.decorators.cache import cache_page
 
 admin.autodiscover()
 
@@ -15,11 +16,13 @@ urlpatterns = patterns('',
     (r'^profile/', include('profiles.urls')),
     (r'^portfolio/', include('portfolio.urls')),
     (r'^gallery/', include('portfolio.gallery_urls')),
+    (r'^views/', recent_views),  
     (r'^guru/', image_render),   
     # MAIN INDEX
     (r'^$', index_view),   
 
 )
+
 
 urlpatterns += patterns('django.views.generic.simple',
     (r'about/$', 'direct_to_template', {'template': 'static/about.html'}),

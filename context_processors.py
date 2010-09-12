@@ -13,8 +13,8 @@ def user_context(request):
     fan_count = list()
     user_id = request.user.id
 
-    try:
-        mugshot = Profile.objects.get(id=request.user.id).mugshot.url.__str__()
+    try:  
+        mugshot = Profile.objects.get(user=request.user).mugshot
     except:
         pass   
     
@@ -41,9 +41,9 @@ def user_context(request):
         fan_count = 0
 
     context['our_profile']  = Profile.objects.get(user=request.user)
-    context['mugshot'] = mugshot
-    context['portfolio_count'] = portfolio_count
-    context['acclaim_count'] = acclaim_count
-    context['fan_count'] = fan_count
+    context['our_mugshot'] = mugshot
+    context['our_portfolio_count'] = portfolio_count
+    context['our_acclaim_count'] = acclaim_count
+    context['our_fan_count'] = fan_count
     return context
     

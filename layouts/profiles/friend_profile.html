@@ -2,14 +2,18 @@
 {% load voting_tags %}
 {% load hitcount_tags %}
 {% load pagination_tags %}
+{% load mainsite_tags %}
 
+{% block content %}
 
-{% block content %}	
+{% get_acclaim profile.id %}
+
 <script type="text/javascript">
     $(document).ready(function() {
         {% get_hit_count_javascript for profile %}
     });
 </script>
+
 
 				
 				<!-- Profile Content --> 
@@ -35,10 +39,11 @@
 
 
 
-						<div class="friend_stat_title">Fans<div class="sidebar_section_title">{{ profile_fan_count }}</div></div> 
+						<div class="friend_stat_title">Fans<div class="sidebar_section_title">{{ fan_count }}</div></div> 
 						
 						<div class="friend_mini_acclaim">
-							<div class="general_acclaim_box">{{ profile_vote_count }} </div>
+
+							<div class="general_acclaim_box">{{ acclaim_count }} </div>
 						</div>
 
 					</div>
@@ -68,8 +73,8 @@
 					<div class="general_title">Location</div> 
 					<div class="dotted_divider"></div> 
 					<div class="general_text">
-                    {% if profile.city and profile.state  %}
-					{{ profile.city }}, {{ profile.state }}
+                    {% if profile.location %}
+					{{ profile.location }}
 					{% else %}
 					unavailable
                     {% endif %}
@@ -182,7 +187,9 @@
 			</div>		
 {% endblock %}			
 			
-{% block footer %}			
+{% block footer %}	
+
+
 			<!-- Footer --> 
 			
 			<div class="footer"> 
@@ -195,7 +202,7 @@
 					
 					
 				<div class="profile_acclaim"> 
-					<div class="profile_acclaim_box">{{ acclaim_count }} </div> 
+					<div class="profile_acclaim_box">{{ our_acclaim_count }} </div> 
 					<div class="profile_acclaim_title">Acclaim</div> 
 				</div> 
 				
@@ -207,4 +214,5 @@
  
 </body> 
 </html> 
+
 {% endblock %}

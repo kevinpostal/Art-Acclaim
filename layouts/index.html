@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load profile_tags %}
-
+{% load mainsite_tags %}
 
 {% block sidebar %}
 <!-- Sidebar -->
@@ -114,6 +113,7 @@
                     {% endif %}
 
                 {% get_mugshot artist.id %}
+                <a href="/profile/{{ artist.id }}"> 
                     <img src="{{ mug_shot }}">
 					<table class="home_top_item_caption">
 						<tr>
@@ -122,7 +122,7 @@
 							</td>
 						</tr>
 					</table>
-						
+					</a>	
 					<div class="home_top_item_caption_bg"></div>
 						
 					<div class="home_mini_acclaim_01">
@@ -195,6 +195,9 @@
 
 
 {% block footer %}	
+{% load cache %}
+{% cache 500 home_footer %}
+
 			<div class="footer">
 					
 				<div class="small_print_01">
@@ -213,4 +216,5 @@
 
 </body>
 </html>
+{% endcache %}
 {% endblock %}

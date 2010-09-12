@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'pagination',
     'friends',
+    'main_site',
     'debug_toolbar',
  #   'djangodblog',
     'voting',

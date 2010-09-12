@@ -23,7 +23,7 @@
 						<!-- Photo Upload Left --> 
 						
 						<div class="photo_upload_left">
-                                <img src="{{ mugshot|default:'/images/profile_hero_blank.gif'  }} " alt="" width="325px" height="325px"/>
+                                <img src="{{ our_mugshot|default:'/static/images/profile_hero_blank.gif'  }} " alt="" width="325px" height="325px"/>
 						</div>
 						
 						<iframe id="hiddenupload" name="hiddenupload" style="display:none;"></iframe>
@@ -176,10 +176,6 @@
 						
 			</div>
 
-{% endblock %}	 
-
-{% block footer %}		
-
 <script>
 $("#hiddenupload").load(function(){
      var data = eval($(this).contents().text());
@@ -189,29 +185,5 @@ $("#hiddenupload").load(function(){
      
 });
 </script>
+{% endblock %}	 
 
-			<!-- Footer --> 
-			
-			<div class="footer"> 
-					
-				<div class="small_print_02"> 
-<a href="http://www.chimesandrhymes.com" target="_blank">Blog</a> / <a href="about.htm">About</a> / <a href="privacy.htm">Privacy</a> / <a href="terms.htm">Terms 0f Use</a><br />
-					Site Design By Groundwork Counsel<br /> 
-					<span class="helvetica">&copy;</span> Art Acclaim 2010 
-				</div> 
-					
-					
-				<div class="profile_acclaim"> 
-					<div class="profile_acclaim_box">101K</div> 
-					<div class="profile_acclaim_title">Acclaim</div> 
-				</div> 
-				
-			</div> 
-			
-		</div> 
-	
-	</div> 
- 
-</body> 
-</html> 
-{% endblock %}

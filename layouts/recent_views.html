@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load mainsite_tags %}
+
+{% block content %}	
+				
+				<!-- Friend Content --> 
+				
+				<div class="general_content"> 
+				
+
+					
+					<!-- Friend Header --> 
+					
+					<div class="section_title">Recent Views</div> 
+					
+					<div class="dotted_divider"></div> 			
+					
+					
+					{% for view in recent_users %}
+					{% get_mugshot view.user.id %}
+				    
+					<!-- Recent View -->
+					
+					<div class="friend_container">
+					
+						
+						<a href="/profile/{% get_profile_id view.user.id %}" class="friend_avatar">
+						<img src="{{ mug_shot }}" alt='' width="73px" height="73px" /></a>
+						
+						<div class="friend_info">
+	
+							<div class="general_title_no_margin">
+								<a href="/profile/{% get_profile_id view.user.id %}">{{ view.user.get_full_name|truncate:14 }}</a>
+								<img src="/static/images/view_icon.gif" class="general_right_float" />
+							</div>
+
+							<div class="general_subtitle_no_margin">{% get_location view.user.id %}</div>
+
+						    {% get_acclaim view.user.id %}
+						
+							<div class="mini_acclaim">
+								<div class="mini_acclaim_box">{{ acclaim_count }}</div>
+							</div>
+							
+						</div>
+
+					</div>
+
+					{% endfor %}
+							
+
+				</div> 
+ 
+			</div> 
+			<br class="clear" /> 
+{% endblock %}	

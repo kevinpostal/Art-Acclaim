@@ -3,13 +3,16 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from portfolio.models import *
 from voting.models import Vote
 from heapq import nlargest 
 from operator import itemgetter 
-
+from hitcount.models import *
+from profiles.models import *
+ 
 # Logging In With Email Addresses in Django                
 # http://www.davidcramer.net/code/224/logging-in-with-email-addresses-in-django.html
 class EmailOrUsernameModelBackend(object):
@@ -31,6 +34,20 @@ class EmailOrUsernameModelBackend(object):
         except User.DoesNotExist:
             return None
 ##########################################################################
+
+@login_required
+def recent_views(request):
+
+    context = {}
+
+    id_for_hitcount = HitCount.objects.only("id").get(object_pk=request.user.id).id
+    
+    context['recent_users'] = Hit.objects.select_related().filter(hitcount=id_for_hitcount).exclude(user=None).exclude(user=request.user)
+
+    
+  # import pdb; pdb.set_trace()
+    return render_to_response('recent_views.html',context,context_instance=RequestContext(request))
+
 
 
 def index_view(request):
