@@ -1,4 +1,6 @@
 *.pyc
+*.swap
+pip-log.txt
 static/portfolio/*
 static/mugshots/*
 static/tmp/*

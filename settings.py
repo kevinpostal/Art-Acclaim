@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.admin',
     'pagination',
+    'friends',
     'debug_toolbar',
  #   'djangodblog',
     'voting',

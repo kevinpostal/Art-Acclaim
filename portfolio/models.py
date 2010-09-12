@@ -13,6 +13,7 @@ class Portfolio(models.Model):
     materials = models.CharField(max_length=100,blank=True)
     hash =  models.CharField(max_length=300)
     
+    
     def _get_vote(self):
         "Returns the objects's score"
         return Vote.objects.get_score(self)
