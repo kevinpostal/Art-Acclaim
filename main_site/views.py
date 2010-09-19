@@ -36,11 +36,22 @@ class EmailOrUsernameModelBackend(object):
 ##########################################################################
 
 @login_required
+def gallery_view(request):
+    context = {}
+    context['portfolio'] = Portfolio.objects.order_by('-last_modified')
+
+    return render_to_response('gallery.html', context, context_instance=RequestContext(request))
+    
+
+##########################################################################
+
+@login_required
 def recent_views(request):
 
     context = {}
+    profile_id = Profile.objects.only("id").get(user=request.user.id).id
 
-    id_for_hitcount = HitCount.objects.only("id").get(object_pk=request.user.id).id
+    id_for_hitcount = HitCount.objects.only("id").get(object_pk=profile_id).id
     
     context['recent_users'] = Hit.objects.select_related().filter(hitcount=id_for_hitcount).exclude(user=None).exclude(user=request.user)
 
@@ -72,7 +83,7 @@ def index_view(request):
 
     context['top_artists'] = nlargest(5, hold.iteritems(), itemgetter(1)) #sorts Dictonary by value
     context['top_art'] = Vote.objects.get_top(Portfolio,limit=5)
-    context['recent_art'] = Portfolio.objects.order_by('creation_date')[:12]
+    context['recent_art'] = Portfolio.objects.order_by('-last_modified')[:12]
     
 
     return render_to_response('index.html',context,context_instance=RequestContext(request))

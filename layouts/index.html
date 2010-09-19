@@ -82,7 +82,7 @@
 
 {% block content %}
 {% load cache %}
-{% cache 500 homepage %}
+
 			<!-- Home Banner -->
 			
 			<div class="home_banner">
@@ -113,7 +113,7 @@
                     {% endif %}
 
                 {% get_mugshot artist.id %}
-                <a href="/profile/{{ artist.id }}"> 
+                <a href="/profile/{% get_profile_id artist.id %}"> 
                     <img src="{{ mug_shot }}">
 					<table class="home_top_item_caption">
 						<tr>
@@ -190,7 +190,7 @@
 				</div>
 				
 			</div>
-{% endcache %}
+
 {% endblock %}
 
 

@@ -15,15 +15,16 @@
 					
 					<div class="dotted_divider"></div> 			
 					
-					
+			{% if recent_users %}
 					{% for view in recent_users %}
 					{% get_mugshot view.user.id %}
 				    
 					<!-- Recent View -->
-					
-					<div class="friend_container">
-					
-						
+					{% if forloop.counter|divisibleby:'3' %} 
+					<div class="friend_container_last">
+					{% else %}
+                    <div class="friend_container">
+				    {% endif %}
 						<a href="/profile/{% get_profile_id view.user.id %}" class="friend_avatar">
 						<img src="{{ mug_shot }}" alt='' width="73px" height="73px" /></a>
 						
@@ -47,7 +48,9 @@
 					</div>
 
 					{% endfor %}
-							
+					{% else %}
+				    All users that have viewed your page have been unregistered
+			{% endif %}				
 
 				</div> 
  

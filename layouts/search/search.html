@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load voting_tags %}
+{% load pagination_tags %}
+{% block content %}	
+<!-- Gallery Content --> 
+<div class="general_content"> 
+
+    <!-- Gallery Header --> 
+    <div class="section_title">
+        Search 
+        <div class="general_right_float">
+            Sort: <a href="" class="general_link_selected">Exhibit Date</a> | <a href="" class="general_link">Acclaim</a>
+        </div>
+    </div> 
+    
+    <div class="dotted_divider"></div> 
+
+
+    <form method="get" action=".">
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Search">
+                </td>
+            </tr>
+        </table>
+
+<!-- Artwork --> 
+
+{% if page.object_list %}
+ {% for item in page.object_list %}
+    <div class=" art_container">
+    
+        <div class="general_title_no_margin"><a href="">{{ item.title|truncatewords:3 }} </a>
+        </div>
+
+        {% if item.image %}
+       
+            <a href="{{ MEDIA_URL }}{{ item.image }}" rel="art_colorbox" title="{{ item.title }} " class="art_hero"><img src = '/static/{{ item.image }}' width=235px height=165px /></a>
+        {% else %}
+            <a href="/static/images/colorbox_hero_blank.gif" rel="art_colorbox" title="{{ item.title }} " class="art_hero"></a>
+        {% endif %}
+        
+        <div class="art_info">
+            {% if vote %} 
+                <img src="/static/images/acclaim_star.gif" alt="" class="acclaim_star" /> 
+            {% else %}
+            
+            {% endif %}
+            
+            Artist: <a href="">{{ item.user.get_full_name }}</a><br />
+            Dimensions: {{ item.user.dimensions }} <br />
+            Medium:  {{ item.user.materials }}
+            <div class="art_dates">
+                Created: {{ item.user.last_modified }}<br />
+                Exhibited: {{ item.user.creation_date }}
+            </div>
+            <div class="mini_acclaim">
+                <a href="" onclick='return upVote("{{item.hash}}",this)' class="acclaim_plus"></a>
+                <a href="" onclick='return downVote("{{item.hash}}",this)' class="acclaim_minus"></a>
+                <div class="mini_acclaim_box">{{ item.vote.score }}</div>
+            </div>					
+        </div>
+
+    </div>
+ {% endfor %}
+<br class="clear" />
+<br />
+
+    
+    <div class="dotted_divider"></div> 	
+
+</div> 
+
+<br class="clear" />
+
+   
+
+    <!-- Art Footer --> 
+        
+    <div class="section_title">
+        <div class="general_right_float"> 
+           paginate
+        </div>
+    </div> 
+
+</div>		
+
+        {% endif %}
+{% endblock %}		

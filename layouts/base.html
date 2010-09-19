@@ -118,7 +118,7 @@
 				<div class="dotted_divider"></div> 
 				<div class="sidebar_title"><a href="/messages">Messages</a><a href="messages.htm" class="messages"></a></div>
 				<div class="sidebar_title"><a href="/friends">Friends</a><a href="friends.htm" class="friends"></a></div>  
-				<div class="sidebar_title"><a href="/views">Recent Views</a><a href="/views" class="views"> {% get_hit_count for our_profile within "days=7,minutes=0" %}</a></div> 
+				<div class="sidebar_title"><a href="/views">Recent Views</a><a href="/views" class="views"> {% if request.user.is_authenticated %} {% get_hit_count for our_profile within "days=7,minutes=0" %} {% endif %}</a></div> 
 				
 				<div class="dotted_divider"></div>	
 				<div class="sidebar_title">Total Views<div class="sidebar_section_title">{% if request.user.is_authenticated %} {% get_hit_count for our_profile %} {% endif %}</div></div> 
@@ -202,8 +202,6 @@
 
 
 {% block footer %}	
-{% load cache %}
-{% cache 500 base_footer request.user.username %}
 
 
 			</div>
@@ -229,17 +227,17 @@
 					<span class="helvetica">&copy;</span> Art Acclaim 2010 
 				</div> 
 					
-					
+					{% if request.user.is_authenticated %}
 				<div class="profile_acclaim"> 
 					<div class="profile_acclaim_box">{{ our_acclaim_count }}</div> 
 					<div class="profile_acclaim_title">Acclaim</div> 
 				</div>
-				
+				{% endif  %}
 			</div> 
 			
 		</div> 
 
 </body>
 </html>
-{% endcache %}
+
 {% endblock %}

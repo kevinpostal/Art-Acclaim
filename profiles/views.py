@@ -21,29 +21,24 @@ profile_list.__doc__ = list_detail.object_list.__doc__
 
 
 def profile_view(request, user_id=""):
-#Check if request is for your profile or another users
-    if user_id:
+    if user_id: #Check if request is for your profile or another users
         try:
             user = User.objects.get(profile=user_id)
         except User.DoesNotExist:
             raise Http404
             
-        profile = Profile.objects.get(id=user_id)
-        user_portfolio = Portfolio.objects.filter(user=user_id)
+        profile = Profile.objects.select_related().get(user=user)
+
+        user_portfolio = Portfolio.objects.select_related().filter(user=user)
         context = {}
 
-        try:
-            context['user_image'] =  profile.mugshot.url.__str__()
-        except:
-            pass
-         
         if request.user.is_authenticated():
             context['user_profile'] = Profile.objects.filter(id=request.user.id)      
             context['user'] = user
         
         context['profile'] = profile
         context['portfolio'] = user_portfolio
-        context['name'] = profile.user.get_full_name()
+        context['name'] = profile.user.get_full_name().__str__()
         
         return render_to_response('profiles/friend_profile.html', context, context_instance=RequestContext(request))
     else:

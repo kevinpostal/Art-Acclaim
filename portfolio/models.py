@@ -5,9 +5,10 @@ from thumbs import ImageWithThumbsField
 
 class Portfolio(models.Model):
     user = models.ForeignKey(User, unique=False)
-    image = ImageWithThumbsField(upload_to='portfolio', sizes=( (48,48),(73,73),(190,125),(158,105),(223,223),(235,165) ) ,blank=True)
-    creation_date = models.DateField(blank=True,null=True)
-    last_modified = models.DateField(auto_now=True)
+    image = ImageWithThumbsField(upload_to='portfolio', sizes=( (48,48),(73,73),(190,125),(158,105),(223,223),(235,165),(325,325) ) ,blank=True)
+    creation_date = models.DateTimeField(blank=True,null=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    add_date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=300)
     dimensions = models.CharField(max_length=100,blank=True)
     materials = models.CharField(max_length=100,blank=True)

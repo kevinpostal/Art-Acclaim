@@ -8,10 +8,6 @@ DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-COMPRESS_CSS = False
-
-
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -43,8 +39,8 @@ MEDIA_URL = '/static/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '$z8ps0bs=e4s**dz)--o42!#*rsrl=b-n0n)+(!0c*-s9ihq!j'
+# Make this unique, andp don't share it with anybody.
+SECRET_KEY = '$z3tyg4s=e4s**dz)--o42!#*rsrl=b-n0n)+(!04*-s9ihq!j'
 
 #Cache System (memcache)
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
@@ -68,7 +64,7 @@ TEMPLATE_CONTEXT_PROCESSORS =  (
 
 INTERNAL_IPS = ('127.0.0.1','10.176.105.169','75.82.209.7')
 
-#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -81,12 +77,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.common.CommonMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'djangodblog.middleware.DBLogMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware', #POS will cause errors on vote
     'tracking.middleware.BannedIPMiddleware',
     'tracking.middleware.VisitorTrackingMiddleware',
     'tracking.middleware.VisitorCleanUpMiddleware',
-    
 )
 
 
@@ -101,7 +95,6 @@ TEMPLATE_DIRS = (
 
 #Django-Registration
 ACCOUNT_ACTIVATION_DAYS = 7 #One-week activation window; you may, of course, use a different value.
-
 
 # Various apps available
 DEBUG_TOOLBAR_PANELS = (
@@ -145,23 +138,36 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.admin',
     'pagination',
+    'haystack',
     'friends',
     'main_site',
-    'debug_toolbar',
- #   'djangodblog',
+    'djangodblog',
     'voting',
     'request',
     'registration',
     'profiles',
     'portfolio',
+    'south',
     'image_guru',
     'hitcount',
-    'tracking',
-	'debug_toolbar',
+#    'tracking',
 #    'devserver', 
-#    'django_extensions',
+    'debug_toolbar',
+   'django_extensions',
 
 )
+
+# see http://developer.yahoo.com/performance/rules.html#expires
+AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+    }
+
+
+#Haystack
+HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SEARCH_ENGINE = 'xapian'
+HAYSTACK_XAPIAN_PATH = os.path.join(PROJECT_PATH, 'xapian_search/')
 
 #Django-pagination
 PAGINATION_DEFAULT_PAGINATION = 15

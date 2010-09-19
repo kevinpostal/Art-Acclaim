@@ -42,8 +42,8 @@ def user_context(request):
 
     context['our_profile']  = Profile.objects.get(user=request.user)
     context['our_mugshot'] = mugshot
-    context['our_portfolio_count'] = portfolio_count
-    context['our_acclaim_count'] = acclaim_count
-    context['our_fan_count'] = fan_count
+    context['our_portfolio_count'] = portfolio_count.__str__()
+    context['our_acclaim_count'] = acclaim_count.__str__()
+    context['our_fan_count'] = fan_count.__str__()
     return context
     
