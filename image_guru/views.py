@@ -30,14 +30,15 @@ def image_render(request):
 def img_move(hash,profile):
     import shutil 
     
-   # import pdb; pdb.set_trace()
-    
     image_tank = Image_Tank.objects.get(hash=hash)
-    img_store =  image_tank.image.path.__str__()
-    img_name =image_tank.image.name.split('/')[1].__str__()
-    image_data = open(img_store, 'rb').read()
+    img_name = image_tank.image.name.split('/')[1].__str__() # Gets the image name
+    # COMMENTING OUT BECUASE OF s3 INTERGRATION
+    # AKA Django-Storages
+    #
+    #img_store =  image_tank.image.path.__str__()
+    #image_data = open(img_store, 'rb').read()
+    #return SimpleUploadedFile(img_name, image_data)
 
-    return SimpleUploadedFile(img_name, image_data)
-
+    return image_tank.image.file
     
-#image_tank.delete()
+

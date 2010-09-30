@@ -179,7 +179,7 @@
 <script>
 $("#hiddenupload").load(function(){
      var data = eval($(this).contents().text());
-     $(".photo_upload_left img").attr("src", '/static/' + data[0].fields.image);
+     $(".photo_upload_left img").attr("src", 'https://s3.amazonaws.com/art_acclaim/' + data[0].fields.image);
      $("#imghash").val(data[0].fields.hash);
      $("#id_image").removeAttr("disabled")
      

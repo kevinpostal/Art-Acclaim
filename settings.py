@@ -26,21 +26,19 @@ SITE_ID = 1
 USE_I18N = True
 
 # Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
+MEDIA_URL = 'https://s3.amazonaws.com/art_acclaim/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/adminmedia/'
+ADMIN_MEDIA_PREFIX = '/admin-media/'
 
-# Make this unique, andp don't share it with anybody.
-SECRET_KEY = '$z3tyg4s=e4s**dz)--o42!#*rsrl=b-n0n)+(!04*-s9ihq!j'
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '$z8ps0bs=e4s*kjo42!#*g3423rsrl=b-n0n)+(!0c*-s9ihq!j'
 
 #Cache System (memcache)
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
@@ -63,10 +61,6 @@ TEMPLATE_CONTEXT_PROCESSORS =  (
 )
 
 INTERNAL_IPS = ('127.0.0.1','10.176.105.169','75.82.209.7')
-
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-INTERNAL_IPS = ('127.0.0.1',)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
@@ -122,12 +116,10 @@ DEBUG_TOOLBAR_CONFIG = {
 
 AUTH_PROFILE_MODULE = "profiles.Profile"
 
-
 AUTHENTICATION_BACKENDS = (
     'main_site.views.EmailOrUsernameModelBackend',
     'django.contrib.auth.backends.ModelBackend'
 )
-
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -141,7 +133,6 @@ INSTALLED_APPS = (
     'haystack',
     'friends',
     'main_site',
-    'djangodblog',
     'voting',
     'request',
     'registration',
@@ -150,19 +141,13 @@ INSTALLED_APPS = (
     'south',
     'image_guru',
     'hitcount',
-#    'tracking',
-#    'devserver', 
+    'storages',
+#   'tracking',
+#   'devserver', 
     'debug_toolbar',
-   'django_extensions',
+    'django_extensions',
 
 )
-
-# see http://developer.yahoo.com/performance/rules.html#expires
-AWS_HEADERS = {
-    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
-    'Cache-Control': 'max-age=86400',
-    }
-
 
 #Haystack
 HAYSTACK_SITECONF = 'search_sites'

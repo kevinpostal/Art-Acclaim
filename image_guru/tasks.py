@@ -28,13 +28,11 @@ def image_uploaded_handler(sender, **kwargs):
     src_width, src_height = imgFile.size
     src_ratio = float(src_width) / float(src_height)
     
-
     dst_width, dst_height = 325, 325
     if type == 'portfolio_image':
         dst_width, dst_height = 700, 490
     
     dst_ratio = float(dst_width) / float(dst_height)
-    
     
     if dst_ratio < src_ratio:
         crop_height = src_height
@@ -54,7 +52,6 @@ def image_uploaded_handler(sender, **kwargs):
 
     temp_handle = StringIO()
     imgFile.save(temp_handle, 'png')
-    
     
     temp_handle.seek(0) # Seeks to the start of the image 
     suf = SimpleUploadedFile(file_name,temp_handle.read(), content_type='image/png')

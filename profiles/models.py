@@ -6,11 +6,12 @@ from django.db.models import permalink
 from django.contrib.auth.models import User
 from django.contrib.localflavor.us.models import PhoneNumberField
 from thumbs import ImageWithThumbsField
+from django.core.files.storage import default_storage as s3_storage
+
 
 class Profile(models.Model):
-
     user = models.ForeignKey(User, unique=True)
-    mugshot = ImageWithThumbsField(upload_to='mugshots', sizes=( (73,73),(190,190),(223,223),(325,325) ) ,blank=True) 
+    mugshot = ImageWithThumbsField(storage=s3_storage,upload_to='mugshots', sizes=( (73,73),(190,190),(223,223),(325,325) ) ,blank=True) 
     #models.FileField(_('mugshot'), upload_to='mugshots', blank=True)
     location = models.CharField(_('location'), blank=True, max_length=100)
     quote = models.TextField(_('quote'), blank=True)

@@ -67,7 +67,8 @@ def profile_edit(request, template_name='profiles/profile_edit.html'):
             user_form.save()
             
             if request.POST['imagehash']:
-                profile.mugshot  = img_move(request.POST['imagehash'],profile)
+                profile.mugshot.delete() #Remove the old image object
+                profile.mugshot = img_move(request.POST['imagehash'],profile) # And sets the new image object
                 profile.save()
             
             return HttpResponseRedirect(reverse('profile_view'))

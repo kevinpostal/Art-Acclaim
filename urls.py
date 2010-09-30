@@ -33,5 +33,6 @@ urlpatterns += patterns('django.views.generic.simple',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
+        (r'^admin-media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '%s' % "usr/lib/python2.5/site-packages/django/contrib/admin/media/" }),
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '%s/static' % settings.PROJECT_PATH }),
         )
